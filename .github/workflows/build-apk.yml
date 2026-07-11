@@ -1,0 +1,65 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-webview-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build APK with Gradle
+        run: |
+          cd android
+          gradle assembleRelease
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EmbyX-Android-APK
+          path: android/app/build/outputs/apk/release/*.apk
+          if-no-files-found: warn
+
+  build-cordova-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build with Cordova
+        run: |
+          npm install -g cordova
+          cordova create EmbyXApp com.embyx.webapp EmbyX --no-telemetry
+          cd EmbyXApp
+          cordova platform add android
+          rm -rf www/*
+          cp -r ../en/* www/
+          cordova build android --release
+
+      - name: Upload Cordova APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EmbyX-Cordova-APK
+          path: EmbyXApp/platforms/android/app/build/outputs/apk/**/*.apk
+          if-no-files-found: warn
