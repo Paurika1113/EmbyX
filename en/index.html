@@ -142,7 +142,7 @@
                 filter: drop-shadow(0 0 6px rgba(82, 181, 75, 0.6));
             }
 
-            /* Long Mode & PiP */ .lm-o{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background:#000;display:none;flex-direction:column}.lm-o.on{display:flex}.lm-t{position:absolute;top:0;left:0;right:0;z-index:1010;padding:max(8px,env(safe-area-inset-top)) 12px 8px;background:linear-gradient(180deg,rgba(0,0,0,.85),transparent);display:flex;align-items:center;opacity:0;transition:opacity .3s}.lm-t.show{opacity:1}.lm-b{position:absolute;bottom:0;left:0;right:0;z-index:1010;padding:32px 12px max(8px,env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);opacity:0;transition:opacity .3s}.lm-b.show{opacity:1}.lm-p{position:relative;width:100%;height:4px;background:rgba(255,255,255,.2);border-radius:2px;cursor:pointer;margin-bottom:8px}.lm-pb{height:100%;background:#52B54B;border-radius:2px;width:0;transition:width .1s linear}.lm-c{display:flex;align-items:center;justify-content:center;gap:16px}.lm-c button{color:rgba(255,255,255,.8);background:0;border:0;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center}.lm-cb{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center}.lm-br{flex:1;overflow-y:auto}.lm-sc{color:#fff;font-size:15px;font-weight:700;padding:16px 16px 8px}.lm-rw{display:flex;gap:10px;overflow-x:auto;padding:0 16px 8px;scrollbar-width:none}.lm-cd{flex-shrink:0;width:120px;cursor:pointer}.lm-cd img{width:100%;aspect-ratio:2/3;border-radius:8px;object-fit:cover;background:#222}.lm-cd .t{color:#fff;font-size:11px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lm-gr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 16px}.lm-it{cursor:pointer}.lm-it img{width:100%;aspect-ratio:2/3;border-radius:8px;object-fit:cover;background:#222}.lm-it .n{color:#fff;font-size:11px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pip-b{position:fixed;bottom:100px;right:16px;width:160px;z-index:2000;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.5);cursor:pointer;display:none;background:#000;border:1px solid rgba(255,255,255,.1)}.pip-b.on{display:block}.pip-b video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.pip-b .x{position:absolute;top:2px;right:2px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.6);border:0;color:#fff;font-size:12px;cursor:pointer;display:flex;z-index:1}.pip-b .l{position:absolute;bottom:0;left:0;right:0;padding:2px 4px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lm-s{display:flex;gap:6px;padding:8px 16px;overflow-x:auto;scrollbar-width:none}.lm-s button{padding:4px 14px;border-radius:999px;font-size:12px;cursor:pointer;white-space:nowrap;background:#222;color:#999;border:0}.lm-s button.a{background:rgba(82,181,75,.2);color:#52B54B}.lm-e{display:flex;align-items:center;padding:8px 16px;cursor:pointer;gap:8px;color:#fff;font-size:13px}.lm-e:hover{background:rgba(255,255,255,.05)}.lm-e .e1{width:32px;flex-shrink:0;text-align:center;color:#888}.lm-e .e2{flex:1;min-width:0}.lm-e .e3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lm-e .e4{color:#666;font-size:11px}.lm-u{position:absolute;bottom:100px;right:16px;z-index:1020;background:rgba(20,20,20,.95);border-radius:12px;padding:12px;width:260px;border:1px solid rgba(255,255,255,.1);display:none}.lm-u.on{display:block}.lm-l{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1010;width:32px;height:32px;border:3px solid rgba(255,255,255,.2);border-top-color:#52B54B;border-radius:50%;animation:lsp .8s linear infinite;display:none}.lm-l.on{display:block}@keyframes lsp{to{transform:translate(-50%,-50%) rotate(360deg)}}  /* Hide ugly default play button */ in some Android WebViews */
+            /* Hide ugly default play button in some Android WebViews */
             video::-webkit-media-controls-start-playback-button {
                 display: none !important;
                 -webkit-appearance: none;
@@ -310,12 +310,6 @@
                 <div id="libraryBtn" class="nav-btn text-gray-400">
                     <i data-lucide="folder-open" class="stroke-current w-5 h-5"></i>
                 </div>
-                <div id="longModeBtn" class="nav-btn text-gray-400">
-                    <i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>
-                </div>
-                <div id="lmBtn" class="nav-btn text-gray-400">
-                    <i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>
-                </div>
                 <div id="myBtn" class="nav-btn text-gray-400">
                     <i data-lucide="user-round" class="stroke-current w-5 h-5"></i>
                 </div>
@@ -396,14 +390,6 @@
                                     Deletion
                                     ⚠️</label>
                                 <input type="checkbox" id="configDeleteMode"
-                                    class="rounded text-primary bg-gray-700 border-none w-4 h-4 pointer-events-none">
-                            </div>
-                            <div id="rowLongMode" tabindex="0"
-                                class="focusable-item flex items-center justify-between py-2.5 px-3 bg-gray-900/40 rounded-lg border border-transparent hover:bg-gray-800/60 transition-all cursor-pointer group"
-                                onclick="document.getElementById('configLongMode').click();">
-                                <label for="configLongMode"
-                                    class="text-gray-300 text-sm cursor-pointer flex-1 font-medium">Long Video Mode</label>
-                                <input type="checkbox" id="configLongMode"
                                     class="rounded text-primary bg-gray-700 border-none w-4 h-4 pointer-events-none">
                             </div>
                             <div class="flex space-x-3 pt-2">
@@ -608,9 +594,7 @@
             class="fixed top-16 left-1/2 -translate-x-1/2 bg-black/50 px-4 py-2 rounded-2xl text-white text-sm pointer-events-none transition-opacity duration-300 opacity-0 z-[100] w-max max-w-[80vw] whitespace-normal text-center border border-white/10 backdrop-blur-sm">
             Message
         </div>
-        <div class="pip-b" id="pipB"><video id="pipV" playsinline webkit-playsinline></video><button class="x" id="pipX">X</button><div class="l" id="pipL"></div></div>
-    <div class="lm-o" id="lmO"><div class="lm-br" id="lmBr"></div><div class="lm-l" id="lmLd"></div></div>
-    <div id="loading"
+        <div id="loading"
             class="fixed inset-0 z-40 flex items-center justify-center bg-transparent pointer-events-none hidden">
             <div class="w-10 h-10 border-4 border-gray-600 border-t-primary rounded-full animate-spin"></div>
         </div>
@@ -737,9 +721,7 @@
 
                 lucide.createIcons();
 
-                if (localStorage.getItem('emby_long_mode') === 'true') {
-                    this.activateLongMode();
-                } else if (this.config.server && this.config.token) {
+                if (this.config.server && this.config.token) {
                     this.fetchVideos(this.state.currentLibraryId, null, false, this.state.playMode === 'random');
                 } else {
                     setTimeout(() => this.toggleModal('profilePage', true), 500);
@@ -826,7 +808,6 @@
                 this.config.autoplay = localStorage.getItem('emby_autoplay') !== 'false';
                 this.config.shortDrama = localStorage.getItem('emby_shortdrama') === 'true';
                 this.config.deleteMode = localStorage.getItem('emby_delete_mode') === 'true';
-                this.config.longMode = localStorage.getItem('emby_long_mode') === 'true';
 
                 // Unique Device ID for session management
                 if (!localStorage.getItem('emby_device_id')) {
@@ -865,8 +846,6 @@
                 if (this.dom.configAutoplay) this.dom.configAutoplay.checked = this.config.autoplay;
                 if (this.dom.configShortDrama) this.dom.configShortDrama.checked = this.config.shortDrama;
                 if (this.dom.configDeleteMode) this.dom.configDeleteMode.checked = this.config.deleteMode;
-                let _lmCb = document.getElementById('configLongMode');
-                if (_lmCb) _lmCb.checked = this.config.longMode;
 
                 // Sync UI based on config
                 this.dom.deleteBtn.style.display = this.config.deleteMode ? 'flex' : 'none';
@@ -885,7 +864,6 @@
                 const autoplay = this.dom.configAutoplay.checked;
                 const shortDrama = this.dom.configShortDrama.checked;
                 const deleteMode = this.dom.configDeleteMode.checked;
-                const longMode = document.getElementById('configLongMode')?.checked === true;
 
                 if (!server || !user) return this.showToast('Please fill in all fields');
 
@@ -934,7 +912,6 @@
                         localStorage.setItem('emby_autoplay', autoplay);
                         localStorage.setItem('emby_shortdrama', shortDrama);
                         localStorage.setItem('emby_delete_mode', deleteMode);
-                        localStorage.setItem('emby_long_mode', longMode);
 
                         // Clear data cache, keep core settings and reload
                         localStorage.removeItem('emby_views_cache');
@@ -970,9 +947,8 @@
                     localStorage.setItem('emby_autoplay', autoplay);
                     localStorage.setItem('emby_shortdrama', shortDrama);
                     localStorage.setItem('emby_delete_mode', deleteMode);
-                    localStorage.setItem('emby_long_mode', longMode);
 
-                    this.config = { ...this.config, server, user, token: data.AccessToken, userId: data.SessionInfo.UserId, useStatic: isStatic, autoplay, shortDrama, deleteMode, longMode };
+                    this.config = { ...this.config, server, user, token: data.AccessToken, userId: data.SessionInfo.UserId, useStatic: isStatic, autoplay, shortDrama, deleteMode };
 
                     const pwdLen = Math.max(1, pwd.length);
                     localStorage.setItem('emby_pwd_len', pwdLen);
@@ -3352,8 +3328,6 @@
                 this.dom.viewModeBtn.onclick = () => this.toggleViewMode();
                 this.dom.playModeBtn.onclick = () => this.togglePlayMode();
                 this.dom.libraryBtn.onclick = () => this.showLibraries();
-                this.dom.lmBtn = document.getElementById('lmBtn');
-                this.dom.lmBtn.onclick = () => this.toggleLongMode();
                 this.dom.myBtn.onclick = () => this.toggleModal('profilePage', true);
 
                 document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -4028,116 +4002,6 @@
                     .replace(/"/g, '&quot;')
                     .replace(/'/g, '&#039;');
             }
-
-            // Long mode & PiP
-            toggleLongMode() {
-                const ov = document.getElementById('lmO');
-                const on = !ov.classList.contains('on');
-                localStorage.setItem('emby_long_mode', on);
-                if (on) {
-                    ov.classList.add('on');
-                    document.getElementById('app').classList.add('hidden');
-                    document.getElementById('lmBtn').innerHTML = '<i data-lucide="video" class="stroke-current w-5 h-5"></i>';
-                    document.getElementById('lmBtn').classList.add('nav-clicked');
-                    lucide.createIcons();
-                    if (!window.longPlayer) window.longPlayer = new LongModePlayer(this);
-                    window.longPlayer.init();
-                } else {
-                    if (window.longPlayer) window.longPlayer.destroy();
-                    ov.classList.remove('on');
-                    document.getElementById('app').classList.remove('hidden');
-                    document.getElementById('lmBtn').innerHTML = '<i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>';
-                    document.getElementById('lmBtn').classList.remove('nav-clicked');
-                    lucide.createIcons();
-                    if (this.config.server && this.config.token) this.fetchVideos(this.state.currentLibraryId, null, false, this.state.playMode === 'random');
-                }
-            }
-
-            enterPip(videoEl, title) {
-                const box = document.getElementById('pipB');
-                const pv = document.getElementById('pipV');
-                const parent = videoEl.parentNode;
-                const next = videoEl.nextSibling;
-                pv.src = videoEl.currentSrc || videoEl.src;
-                pv.currentTime = videoEl.currentTime;
-                pv.play();
-                box.classList.add('on');
-                document.getElementById('pipL').textContent = title || '';
-                box._ret = { parent, next, old: videoEl };
-                videoEl.pause();
-                videoEl.remove();
-                document.getElementById('pipX').onclick = (e) => { e.stopPropagation(); this.exitPip(); };
-                box.onclick = () => this.exitPip(true);
-            }
-
-            exitPip(play = false) {
-                const box = document.getElementById('pipB');
-                const pv = document.getElementById('pipV');
-                box.classList.remove('on');
-                if (box._ret) {
-                    pv.pause();
-                    if (box._ret.old) {
-                        box._ret.old.src = pv.src;
-                        box._ret.old.currentTime = pv.currentTime;
-                        if (play) box._ret.old.play();
-                        if (box._ret.next) box._ret.parent.insertBefore(box._ret.old, box._ret.next);
-                        else box._ret.parent.appendChild(box._ret.old);
-                    }
-                }
-                pv.removeAttribute('src');
-                pv.load();
-                delete box._ret;
-            }
-        }
-
-        // LongModePlayer
-        class LongModePlayer {
-            constructor(a) { this.app = a; this.state = {}; this._bk(); }
-            init() { this._dash(); }
-            destroy() { this._cp(); document.getElementById('lmBr').innerHTML = ''; }
-
-            _dash() {
-                const br=document.getElementById('lmBr');
-                br.innerHTML='<div style="padding:40% 0;text-align:center"><i data-lucide="loader-2" class="w-8 h-8 animate-spin" style="color:#555"></i></div>';
-                lucide.createIcons({root:br});
-                const{server,token,userId}=this.app.config;
-                if(!server||!token){br.innerHTML='<div style="padding:40% 0;text-align:center;color:#888">Configure server in Profile</div>';return;}
-                const ak='api_key='+token;
-                Promise.all([
-                    fetch(server+'/emby/Library/MediaFolders?'+ak).then(r=>r.json()).then(d=>d.Items||[]).catch(()=>[]),
-                    fetch(server+'/emby/Users/'+userId+'/Items/Resume?Limit=10&'+ak).then(r=>r.json()).then(d=>d.Items||[]).catch(()=>[]),
-                    fetch(server+'/emby/Users/'+userId+'/Items/Latest?Limit=18&'+ak).then(r=>r.json()).catch(()=>[])
-                ]).then(([libs,resume,latest])=>{
-                    const esc=this.app.escapeHtml;const img=i=>this.app.getImageSrc(i);
-                    let h='<div style="padding:12px 16px;color:#fff;font-size:20px;font-weight:700">EmbyX <span style="font-size:10px;background:rgba(82,181,75,.2);color:#52B54B;padding:2px 8px;border-radius:999px;font-weight:400">Long Mode</span></div>';
-                    if(resume.length){h+='<div class="lm-sc">Continue Watching</div><div class="lm-rw">';
-                    resume.forEach(i=>{h+='<div class="lm-cd" onclick="longPlayer._play(\''+i.Id+'\')"><img src="'+img(i)+'" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>\'"><div class="t">'+esc(i.Name)+'</div></div>';});h+='</div>';}
-                    h+='<div class="lm-sc">Libraries</div><div class="lm-gr">';
-                    libs.forEach(l=>{h+='<div class="lm-it" onclick="longPlayer._lib(\''+l.Id+'\')"><div style="aspect-ratio:1;border-radius:12px;background:#222;display:flex;align-items:center;justify-content:center;margin-bottom:4px"><i data-lucide="'+(l.CollectionType==='movies'?'film':l.CollectionType==='tvshows'?'tv':'folder')+'" style="width:28px;height:28px;color:#52B54B"></i></div><div class="n">'+esc(l.Name)+'</div></div>';});h+='</div>';
-                    if(latest.length){h+='<div class="lm-sc">Recently Added</div><div class="lm-gr">';
-                    latest.forEach(i=>{h+='<div class="lm-it" onclick="longPlayer._play(\''+i.Id+'\')"><img src="'+img(i)+'" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>\'"><div class="n">'+esc(i.Name)+'</div></div>';});h+='</div>';}
-                    br.innerHTML=h;
-                    lucide.createIcons({root:br});
-                }).catch(()=>{br.innerHTML='<div style="padding:40% 0;text-align:center;color:#888">Connection failed</div>';});
-            }
-            _lib(id){const br=document.getElementById('lmBr');br.innerHTML='<div style="display:flex;align-items:center;padding:8px 12px;gap:8px;border-bottom:1px solid rgba(255,255,255,.05)"><button onclick="longPlayer._dash()" style="background:0;border:0;color:#888;cursor:pointer;padding:4px"><i data-lucide="chevron-left" style="width:20px;height:20px"></i></button><span style="color:#fff;font-weight:700;font-size:16px">Library</span></div><div style="flex:1;overflow-y:auto"><div class="lm-gr" style="padding-top:12px"></div></div>';lucide.createIcons({root:br});const{server,token,userId}=this.app.config;fetch(server+'/emby/Users/'+userId+'/Items?ParentId='+id+'&api_key='+token+'&Fields=PrimaryImageAspectRatio,UserData,Overview').then(r=>r.json()).then(d=>{const items=d.Items||[];const grid=br.querySelector('.lm-gr');if(!grid)return;grid.innerHTML=items.map(i=>'<div class="lm-it" onclick="longPlayer.'+(i.Type==='Series'?'_series(\''+i.Id+'\')':'_play(\''+i.Id+'\')')+'"><img src="'+this.app.getImageSrc(i)+'" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>\'"><div class="n">'+this.app.escapeHtml(i.Name||'')+'</div></div>').join('');}).catch(()=>{});}
-            _series(id){const br=document.getElementById('lmBr');br.innerHTML='<div style="display:flex;align-items:center;padding:8px 12px;gap:8px;border-bottom:1px solid rgba(255,255,255,.05)"><button onclick="longPlayer._dash()" style="background:0;border:0;color:#888;cursor:pointer;padding:4px"><i data-lucide="chevron-left" style="width:20px;height:20px"></i></button><span style="color:#fff;font-weight:700;font-size:16px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="lmSn">...</span></div><div id="lmSb" style="flex:1;overflow-y:auto"></div>';lucide.createIcons({root:br});const{server,token,userId}=this.app.config;Promise.all([fetch(server+'/emby/Users/'+userId+'/Items/'+id+'?api_key='+token).then(r=>r.json()),fetch(server+'/emby/Shows/'+id+'/Seasons?userId='+userId+'&api_key='+token).then(r=>r.json()).then(d=>d.Items||[])]).then(([series,seasons])=>{document.getElementById('lmSn').textContent=series.Name;let h='<div class="lm-s">';seasons.forEach((s,i)=>{h+='<button class="'+(i===0?'a':'')+'" onclick="longPlayer._eps(\''+id+'\',\''+s.Id+'\',this)">'+this.app.escapeHtml(s.Name)+'</button>';});h+='</div><div id="lmEp"></div>';document.getElementById('lmSb').innerHTML=h;if(seasons.length)this._eps(id,seasons[0].Id);}).catch(()=>{});}
-            _eps(sid,seid,btn){if(btn){document.querySelectorAll('.lm-s button').forEach(b=>b.classList.remove('a'));btn.classList.add('a');}const{server,token,userId}=this.app.config;fetch(server+'/emby/Shows/'+sid+'/Episodes?seasonId='+seid+'&userId='+userId+'&api_key='+token+'&Fields=Overview,UserData').then(r=>r.json()).then(d=>{const eps=d.Items||[];const el=document.getElementById('lmEp');if(!el)return;el.innerHTML=eps.map((e,i)=>{const p=(e.UserData||{}).PlayedPercentage||0;const w=p>=100;const dur=e.RunTimeTicks?Math.round(e.RunTimeTicks/1e7/60)+'min':'';return '<div class="lm-e" onclick="longPlayer._play(\''+e.Id+'\')" style="'+(w?'opacity:.5':'')+'"><div class="e1">'+(e.IndexNumber||(i+1))+'</div><div class="e2"><div class="e3">'+this.app.escapeHtml(e.Name)+'</div><div class="e4">'+dur+(p>0&&p<100?' - '+Math.round(p)+'%':w?' - Watched':'')+'</div></div></div>';}).join('');if(!eps.length)el.innerHTML='<div style="text-align:center;padding:40px;color:#666">No episodes</div>';}).catch(()=>{});}
-            _play(id){document.getElementById('lmLd').classList.add('on');const{server,token,userId}=this.app.config;fetch(server+'/emby/Users/'+userId+'/Items/'+id+'?api_key='+token+'&Fields=MediaSources,Chapters,Overview,UserData').then(r=>r.json()).then(item=>{document.getElementById('lmLd').classList.remove('on');const br=document.getElementById('lmBr');br.style.display='none';let el=document.getElementById('lmPl');if(!el){el=document.createElement('div');el.id='lmPl';el.style.cssText='position:absolute;inset:0;z-index:1005;background:#000';document.getElementById('lmO').appendChild(el);}el.style.display='block';const isEp=item.Type==='Episode';const t=isEp&&item.SeriesName?item.SeriesName+' - '+item.Name:item.Name;const sub=isEp?'S'+(item.ParentIndexNumber||'?')+'E'+(item.IndexNumber||'?'):(item.ProductionYear||'');el.innerHTML='<video id="lmV" style="width:100%;height:100%;object-fit:contain" playsinline webkit-playsinline></video><div class="lm-t show" id="lmT"><button onclick="longPlayer._cp()" style="background:0;border:0;color:#fff;width:36px;height:36px"><i data-lucide="chevron-left" style="width:22px;height:22px"></i></button><div style="flex:1;min-width:0;margin-left:8px"><div style="color:#fff;font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+this.app.escapeHtml(t)+'</div><div style="color:#999;font-size:11px">'+this.app.escapeHtml(sub)+'</div></div></div><div class="lm-b show" id="lmB"><div class="lm-p" id="lmSk"><div class="lm-pb" id="lmPg"></div></div><div class="lm-c"><button onclick="longPlayer._sk(-1)"><i data-lucide="skip-back" style="width:20px;height:20px"></i></button><button onclick="longPlayer._rw()"><i data-lucide="rewind" style="width:18px;height:18px"></i></button><button class="lm-cb" id="lmPb" onclick="longPlayer._tp()"><i data-lucide="pause" style="width:20px;height:20px"></i></button><button onclick="longPlayer._ff()"><i data-lucide="fast-forward" style="width:16px;height:16px"></i></button><button onclick="longPlayer._sk(1)"><i data-lucide="skip-forward" style="width:20px;height:20px"></i></button><span style="color:#fff;font-size:11px;font-family:monospace" id="lmTm">00:00 / 00:00</span></div></div><div class="lm-u" id="lmNu"></div>';lucide.createIcons({root:el});const v=document.getElementById('lmV');const pu=this.app.getVideoSrc(item.Id,item,true);if(pu){if(pu.includes('.m3u8')&&typeof Hls!=='undefined'&&Hls.isSupported()){if(window._lH){window._lH.destroy();}const h=new Hls({maxBufferSize:0,liveSyncDurationCount:3});h.loadSource(pu);h.attachMedia(v);window._lH=h;}else{v.src=pu;}v.load();v.play().then(()=>{this.state.isPlaying=true;this._upb();}).catch(()=>{});}
-                v.addEventListener('loadedmetadata',()=>this._ut());v.addEventListener('timeupdate',()=>this._ut());v.addEventListener('play',()=>{this.state.isPlaying=true;this._upb();});v.addEventListener('pause',()=>{this.state.isPlaying=false;this._upb();this._osd();});v.addEventListener('ended',()=>{this.state.isPlaying=false;this._upb();this._nxt();});v.addEventListener('waiting',()=>document.getElementById('lmLd').classList.add('on'));v.addEventListener('canplay',()=>document.getElementById('lmLd').classList.remove('on'));document.getElementById('lmSk').onclick=function(e){if(!v.duration)return;const r=this.getBoundingClientRect();v.currentTime=((e.clientX-r.left)/r.width)*v.duration;};el.onmousemove=()=>this._osd();el.ontouchstart=()=>this._osd();this._osd();v.onclick=()=>this._tp();const ud=item.UserData||{};if(ud.PlaybackPositionTicks>5e7){const rs=ud.PlaybackPositionTicks/1e7;v.addEventListener('loadedmetadata',()=>{v.currentTime=rs;},{once:true});}this.app.state.playSessionId='long_'+item.Id+'_'+Date.now();this.app.reportPlayback('playing',v);v.addEventListener('timeupdate',()=>this.app.reportPlayback('progress',v));}).catch(()=>{document.getElementById('lmLd').classList.remove('on');this.app.showToast('Playback failed');});}
-            _cp(){const v=document.getElementById('lmV');if(v){v.pause();v.src='';v.load();}if(window._lH){window._lH.destroy();window._lH=null;}const el=document.getElementById('lmPl');if(el)el.style.display='none';document.getElementById('lmBr').style.display='';if(this._nt){clearTimeout(this._nt);this._nt=null;}if(this._ot){clearTimeout(this._ot);this._ot=null;}}
-            _tp(){const v=document.getElementById('lmV');if(!v)return;if(v.paused){v.play().then(()=>{this.state.isPlaying=true;this._upb();}).catch(()=>{});}else{v.pause();this.state.isPlaying=false;this._upb();this._osd();}}
-            _rw(){const v=document.getElementById('lmV');if(v)v.currentTime=Math.max(0,v.currentTime-10);this._osd();}
-            _ff(){const v=document.getElementById('lmV');if(v)v.currentTime=Math.min(v.duration||0,v.currentTime+10);this._osd();}
-            _sk(d){const v=document.getElementById('lmV');if(!v||!v.duration)return;v.currentTime=Math.max(0,Math.min(v.duration||0,v.currentTime+d*30));this._osd();}
-            _upb(){const b=document.getElementById('lmPb');if(b){b.innerHTML='<i data-lucide="'+(this.state.isPlaying?'pause':'play')+'" style="width:20px;height:20px"></i>';lucide.createIcons({root:b});}}
-            _ut(){const v=document.getElementById('lmV');if(!v||!v.duration)return;const p=v.currentTime/v.duration*100;const bar=document.getElementById('lmPg');if(bar)bar.style.width=Math.min(p,100)+'%';const t=document.getElementById('lmTm');if(t)t.textContent=this._fm(v.currentTime)+' / '+this._fm(v.duration);}
-            _fm(s){if(!s||!isFinite(s))return'00:00';const h=Math.floor(s/3600);const m=Math.floor((s%3600)/60);const c=Math.floor(s%60);return h>0?h+':'+String(m).padStart(2,'0')+':'+String(c).padStart(2,'0'):String(m).padStart(2,'0')+':'+String(c).padStart(2,'0');}
-            _osd(){['lmT','lmB'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('show');});if(this._ot)clearTimeout(this._ot);if(this.state.isPlaying)this._ot=setTimeout(()=>{['lmT','lmB'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('show');});},3000);}
-            _nxt(){const item=this.state.currentEpisode;if(!item||item.Type!=='Episode'||!item.SeriesId)return;const{server,token,userId}=this.app.config;fetch(server+'/emby/Shows/'+item.SeriesId+'/Episodes?seasonId='+item.SeasonId+'&userId='+userId+'&api_key='+token+'&limit=3&Fields=Overview,UserData').then(r=>r.json()).then(d=>{const eps=d.Items||[];const idx=eps.findIndex(e=>e.Id===item.Id);const next=eps[idx+1];if(!next)return;this.state.upNextItem=next;const el=document.getElementById('lmNu');el.innerHTML='<div style="display:flex;gap:10px"><div style="width:60px;flex-shrink:0;aspect-ratio:2/3;border-radius:6px;overflow:hidden;background:#222"><img src="'+this.app.getImageSrc(next)+'" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"></div><div style="flex:1;min-width:0"><div style="font-size:10px;color:#888;text-transform:uppercase">Up Next</div><div style="color:#fff;font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+this.app.escapeHtml(next.Name)+'</div><div style="color:#999;font-size:11px">S'+(next.ParentIndexNumber||'?')+'E'+(next.IndexNumber||'?')+'</div><div style="color:#52B54B;font-size:11px;font-weight:700;margin-top:6px" id="lmCn">15s</div></div><button onclick="longPlayer._cn()" style="flex-shrink:0;background:0;border:0;color:#666;cursor:pointer"><i data-lucide="x" style="width:16px;height:16px"></i></button></div><div style="display:flex;gap:8px;margin-top:10px"><button onclick="longPlayer._cn()" style="flex:1;padding:6px;border-radius:8px;border:0;background:#222;color:#ccc;font-size:12px;cursor:pointer">Cancel</button><button onclick="longPlayer._pn()" style="flex:1;padding:6px;border-radius:8px;border:0;background:#52B54B;color:#fff;font-size:12px;font-weight:700;cursor:pointer">Play Now</button></div>';el.classList.add('on');lucide.createIcons({root:el});let cd=15;this._nt=setInterval(()=>{cd--;const c=document.getElementById('lmCn');if(c)c.textContent=cd+'s';if(cd<=0)this._pn();},1000);}).catch(()=>{});}
-            _cn(){if(this._nt){clearInterval(this._nt);this._nt=null;}document.getElementById('lmNu').classList.remove('on');}
-            _pn(){this._cn();if(this.state.upNextItem)this._play(this.state.upNextItem.Id);}
-            _bk(){document.addEventListener('keydown',e=>{const o=document.getElementById('lmO');if(!o||!o.classList.contains('on'))return;const p=document.getElementById('lmPl');if(!p||p.style.display==='none')return;if(this.app.isAnyModalOpen&&this.app.isAnyModalOpen())return;switch(e.key){case' ':case'k':e.preventDefault();this._tp();break;case'ArrowLeft':e.preventDefault();this._rw();break;case'ArrowRight':e.preventDefault();this._ff();break;case'Escape':e.preventDefault();this._cp();break;case'f':e.preventDefault();document.getElementById('lmO').requestFullscreen().catch(()=>{});break;}});}
         }
 
         window.onload = () => {
