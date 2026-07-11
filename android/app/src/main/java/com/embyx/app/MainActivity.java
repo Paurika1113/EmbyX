@@ -1,6 +1,7 @@
 package com.embyx.app;
 
 import android.os.Bundle;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         settings.setAllowFileAccess(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        settings.setBlockNetworkLoads(false);
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
         settings.setUserAgentString(settings.getUserAgentString() + " EmbyX-Android/1.0");
 
         webView.setWebViewClient(new WebViewClient() {
@@ -30,9 +34,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 return false;
             }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, android.net.http.SslError error) {
+                // Allow all SSL errors to support user-configured Emby servers
+                handler.proceed();
+            }
         });
 
-        // Load from assets (bundled) or fallback to GitHub Pages
+        // Load the EmbyX web app
         webView.loadUrl("https://embyx.5nav.eu.org");
     }
 
