@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>EmbyX - Capabilities Test</title>
+    <link class="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- CDN first, fallback to local lib/ if failure occurs -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"
+        onerror="this.onerror=null;var s=document.createElement('script');s.src='lib/tailwind.min.js';s.setAttribute('data-cfasync','false');document.head.appendChild(s)"></script>
+    <script src="https://unpkg.com/lucide@1.21.0/dist/umd/lucide.min.js"
+        onerror="this.onerror=null;var s=document.createElement('script');s.src='lib/lucide.min.js';document.head.appendChild(s)"></script>
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#52B54B', // Emby Green
+                        secondary: '#EE3152' // TikTok Red
+                    },
+                    fontFamily: {
+                        sans: ['PingFang SC', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-card {
+                @apply bg-gray-800/40 border border-gray-700/50 backdrop-blur-sm rounded-xl;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans select-none min-h-screen pb-10">
+    <!-- Header -->
+    <div class="fixed top-0 left-0 w-full h-[calc(3.5rem+env(safe-area-inset-top))] border-b border-gray-700/50 bg-black/50 backdrop-blur-sm z-10 pt-[env(safe-area-inset-top)]">
+        <div class="flex items-center justify-between h-14 px-4 relative">
+            <button onclick="history.back()" class="text-gray-400 w-10 h-10 flex items-center justify-center active:text-gray-300 rounded-full">
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+            </button>
+            <span class="font-bold text-lg">Capabilities Test</span>
+            <div class="w-10"></div> <!-- Placeholder -->
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="pt-[calc(4.5rem+env(safe-area-inset-top))] p-4 space-y-6">
+        
+        <!-- Environment Detection (4-column Grid) -->
+        <div class="space-y-2">
+            <h2 class="text-gray-400 text-xs font-bold uppercase tracking-widest ml-1">🔍 Environment</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                
+                <!-- Browser Shell -->
+                <div class="glass-card p-4 flex flex-col items-center justify-center text-center space-y-2">
+                    <div class="w-12 h-12 bg-gray-700/30 rounded-full flex items-center justify-center">
+                        <i data-lucide="compass" class="w-7 h-7 text-primary" id="shell-icon"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-medium">Browser Shell</div>
+                        <div class="text-sm font-bold mt-0.5" id="shell-name">Detecting...</div>
+                        <div class="text-[10px] text-gray-400 font-mono mt-0.5" id="shell-version">-</div>
+                    </div>
+                </div>
+
+                <!-- Browser Engine -->
+                <div class="glass-card p-4 flex flex-col items-center justify-center text-center space-y-2">
+                    <div class="w-12 h-12 bg-gray-700/30 rounded-full flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-7 h-7 text-blue-500" id="kernel-icon"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-medium">Browser Engine</div>
+                        <div class="text-sm font-bold mt-0.5" id="kernel-name">Detecting...</div>
+                        <div class="text-[10px] text-gray-400 font-mono mt-0.5" id="kernel-version">-</div>
+                    </div>
+                </div>
+
+                <!-- Operating System -->
+                <div class="glass-card p-4 flex flex-col items-center justify-center text-center space-y-2">
+                    <div class="w-12 h-12 bg-gray-700/30 rounded-full flex items-center justify-center">
+                        <i data-lucide="monitor" class="w-7 h-7 text-purple-500" id="os-icon"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-medium">Operating System</div>
+                        <div class="text-sm font-bold mt-0.5" id="os-name">Detecting...</div>
+                        <div class="text-[10px] text-gray-400 font-mono mt-0.5" id="os-version">-</div>
+                    </div>
+                </div>
+
+                <!-- Device Info -->
+                <div class="glass-card p-4 flex flex-col items-center justify-center text-center space-y-2">
+                    <div class="w-12 h-12 bg-gray-700/30 rounded-full flex items-center justify-center">
+                        <i data-lucide="smartphone" class="w-7 h-7 text-orange-500" id="device-icon"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-medium">Device Info</div>
+                        <div class="text-sm font-bold mt-0.5" id="device-name">Detecting...</div>
+                        <div class="text-[10px] text-gray-400 font-mono mt-0.5" id="device-info">-</div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Raw User-Agent -->
+            <div class="glass-card p-3 text-[10px] text-gray-500 font-mono break-all" id="ua-string">
+                Retrieving User-Agent...
+            </div>
+        </div>
+
+        <!-- Experience Assessment -->
+        <div class="space-y-2">
+            <h2 class="text-gray-400 text-xs font-bold uppercase tracking-widest ml-1">📱 Experience</h2>
+            <div class="glass-card p-4 bg-primary/10 border-primary/20 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="zap" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-primary">Estimated Experience</h3>
+                        <p class="text-xs text-gray-300 mt-0.5" id="exp-summary">Older device. Server transcoding recommended.</p>
+                    </div>
+                </div>
+                <div class="text-3xl font-black text-primary pr-2" id="exp-score">--</div>
+            </div>
+        </div>
+
+        <!-- Playback & Suggestions -->
+        <div class="space-y-2">
+            <h2 class="text-gray-400 text-xs font-bold uppercase tracking-widest ml-1">🎬 Suggestion</h2>
+            <ul class="list-disc list-inside space-y-1 text-gray-400 text-xs ml-1">
+                <li>Native HTML5 player, best on modern devices.</li>
+                <li>Older devices may require server transcoding for H.265/AV1.</li>
+            </ul>
+            <div class="glass-card overflow-hidden">
+                <table class="w-full text-center text-[11px] leading-tight border-collapse">
+                    <thead class="bg-gray-700/30 text-gray-400">
+                        <tr>
+                            <th class="px-2 py-1.5 border-r border-gray-700/50 font-medium">Device</th>
+                            <th class="px-2 py-1.5 border-r border-gray-700/50 font-medium">HEVC HW</th>
+                            <th class="px-2 py-1.5 font-medium">AV1 HW</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700/50 text-gray-400">
+                        <tr>
+                            <td class="px-2 py-1.5 border-r border-gray-700/50 text-primary">Apple</td>
+                            <td class="px-2 py-1.5 border-r border-gray-700/50">A9 (2015) / M1</td>
+                            <td class="px-2 py-1.5">A17 Pro (2023) / M3</td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-1.5 border-r border-gray-700/50 text-primary">Android</td>
+                            <td class="px-2 py-1.5 border-r border-gray-700/50">Budget (2016)</td>
+                            <td class="px-2 py-1.5">Budget (2024)</td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-1.5 border-r border-gray-700/50 text-primary">PC</td>
+                            <td class="px-2 py-1.5 border-r border-gray-700/50">6th-8th Gen Core iGPU</td>
+                            <td class="px-2 py-1.5">11th Gen Core iGPU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Media Decoders Table -->
+        <div class="space-y-2">
+            <h2 class="text-gray-400 text-xs font-bold uppercase tracking-widest ml-1">🧰 Decoding Capabilities</h2>
+            <div class="glass-card overflow-hidden">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead class="bg-gray-700/30 text-gray-400 text-[10px] uppercase font-bold">
+                        <tr>
+                            <th class="py-2.5 px-4 whitespace-nowrap text-center">No.</th>
+                            <th class="py-2.5 px-2">Capability</th>
+                            <th class="py-2.5 px-2 text-center">Status</th>
+                            <th class="py-2.5 px-4 hidden md:table-cell">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700/30 text-gray-300" id="capability-table">
+                        <tr>
+                            <td colspan="4" class="py-4 text-center text-gray-500">Scanning capabilities...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripting Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Helper
+        const $ = id => document.getElementById(id);
+        const ua = navigator.userAgent;
+        $('ua-string').textContent = ua;
+
+        // --- 1. Basic Environment Detection ---
+        function detectEnvironment() {
+            let shell = "Unknown", shellVer = "-";
+            let kernel = "Unknown", kernelVer = "-";
+            let os = "Unknown", osVer = "-";
+
+            // Browser Shell
+            if (/edg\//i.test(ua)) { shell = "Edge"; shellVer = ua.match(/Edg\/([\d.]+)/)?.[1] || "-"; }
+            else if (/chrome/i.test(ua)) { shell = "Chrome"; shellVer = ua.match(/Chrome\/([\d.]+)/)?.[1] || "-"; }
+            else if (/safari/i.test(ua) && !/chrome/i.test(ua)) { shell = "Safari"; shellVer = ua.match(/Version\/([\d.]+)/)?.[1] || "-"; }
+            else if (/firefox/i.test(ua)) { shell = "Firefox"; shellVer = ua.match(/Firefox\/([\d.]+)/)?.[1] || "-"; }
+
+            // Kernel
+            if (/webkit/i.test(ua)) { kernel = "WebKit"; kernelVer = ua.match(/AppleWebKit\/([\d.]+)/)?.[1] || "-"; }
+            else if (/gecko/i.test(ua) && !/webkit/i.test(ua)) { kernel = "Gecko"; kernelVer = ua.match(/rv:([\d.]+)/)?.[1] || "-"; }
+
+            // OS
+            if (/iphone|ipad/i.test(ua)) {
+                os = "iOS";
+                osVer = "-";
+            } else if (/macintosh|mac os x/i.test(ua)) {
+                os = "macOS";
+                osVer = "-";
+            } else if (/windows/i.test(ua)) {
+                os = "Windows";
+                osVer = ua.match(/Windows NT ([\d.]+)/)?.[1] || "-";
+            } else if (/android/i.test(ua)) { 
+                os = "Android"; 
+                osVer = ua.match(/Android ([\d.]+)/)?.[1] || "-"; 
+                if (osVer === "10") osVer = "10+";
+            }
+
+            // Apple Version Extraction
+            if (os === "macOS" || os === "iOS") {
+                const appleVerMatch = ua.match(/Version\/([\d.]+)/);
+                if (appleVerMatch) {
+                    osVer = appleVerMatch[1];
+                } else {
+                    const backupVer = ua.match(/(?:OS|Mac OS X) ([\d_.]+)/)?.[1]?.replace(/_/g, '.');
+                    if (backupVer) osVer = backupVer;
+                }
+            }
+
+            $('shell-name').textContent = shell;
+            $('shell-version').textContent = shellVer;
+            $('kernel-name').textContent = kernel;
+            $('kernel-version').textContent = kernelVer;
+            $('os-name').textContent = os;
+            $('os-version').textContent = osVer;
+
+            // Change Icon
+            if (shell === "Safari") $('shell-icon').setAttribute('data-lucide', 'compass');
+            if (os === "iOS" || os === "macOS") $('os-icon').setAttribute('data-lucide', 'apple');
+            lucide.createIcons();
+        }
+
+        // --- 2. GPU Detection ---
+        function getGPU() {
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (!gl) return null;
+                const ext = gl.getExtension('WEBGL_debug_renderer_info');
+                if (!ext) return null;
+                return gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function getGPUClean() {
+            const gpu = getGPU();
+            if (!gpu) return null;
+            
+            let clean = gpu.replace(/^ANGLE\s*\(/i, '').replace(/\)$/, '');
+            
+            const parts = clean.split(',');
+            let gpuName = parts[0].trim();
+            if (parts.length > 1) {
+                const vendor = parts[0].trim().toLowerCase();
+                if (vendor === 'intel' || vendor === 'nvidia' || vendor === 'amd' || vendor === 'apple' || vendor === 'qualcomm') {
+                    gpuName = parts[1].trim();
+                }
+            }
+            
+            gpuName = gpuName.replace(/.*renderer\s*:\s*/i, '');
+            gpuName = gpuName.split(/Direct3D|vs_|ps_|0x/i)[0].trim();
+            gpuName = gpuName.replace(/\(/g, '')
+                             .replace(/\)/g, '')
+                             .replace(/\(R\)|\(TM\)|™|®/ig, '')
+                             .replace(/\s+/g, ' ')
+                             .trim();
+                             
+            if (/Intel/i.test(gpuName)) {
+                gpuName = gpuName.replace(/\s*Graphics\s*/i, ' ').replace(/\s+/g, ' ').trim();
+            }
+            
+            return gpuName;
+        }
+
+        async function detectDevice() {
+            let fallbackName = "Unknown Device";
+            let fallbackBrand = "Other";
+
+            if (/iPhone|iPad|iPod/.test(ua)) fallbackBrand = 'Apple';
+            else if (/Xiaomi|Redmi|MIUI|POCO/i.test(ua) || /2312|2210|2109|2405/i.test(ua)) fallbackBrand = 'Xiaomi';
+            else if (/Samsung/i.test(ua)) fallbackBrand = 'Samsung';
+            else if (/Huawei/i.test(ua)) fallbackBrand = 'Huawei';
+            else if (/Honor/i.test(ua)) fallbackBrand = 'Honor';
+            else if (/OPPO/i.test(ua)) fallbackBrand = 'OPPO';
+            else if (/vivo/i.test(ua)) fallbackBrand = 'vivo';
+
+            if (fallbackBrand !== 'Other') {
+                fallbackName = fallbackBrand + " Device";
+            }
+
+            if (navigator.userAgentData) {
+                try {
+                    const hints = await navigator.userAgentData.getHighEntropyValues(['model']);
+                    if (hints.model) {
+                        fallbackName = hints.model;
+                        if (/Xiaomi|Redmi|POCO|Mi /i.test(fallbackName) || /2312|2210|2109|2405/i.test(fallbackName)) {
+                            fallbackBrand = 'Xiaomi';
+                        } else if (/Samsung/i.test(fallbackName)) {
+                            fallbackBrand = 'Samsung';
+                        } else if (/Huawei/i.test(fallbackName)) {
+                            fallbackBrand = 'Huawei';
+                        } else if (/Honor/i.test(fallbackName)) {
+                            fallbackBrand = 'Honor';
+                        } else if (/OPPO/i.test(fallbackName)) {
+                            fallbackBrand = 'OPPO';
+                        } else if (/vivo/i.test(fallbackName)) {
+                            fallbackBrand = 'vivo';
+                        }
+                    }
+                } catch (e) { }
+            } else {
+                if (/android/i.test(ua)) {
+                    const match = ua.match(/\(([^)]+)\)/);
+                    if (match && match[1]) {
+                        const parts = match[1].split(';');
+                        for (let p of parts) {
+                            p = p.trim();
+                            if (/^linux/i.test(p) || /^u$/i.test(p) || /^android/i.test(p) || /^[a-z]{2}-[a-z]{2}$/i.test(p) || /wv/.test(p) || p === 'K') continue;
+                            fallbackName = p.split('Build/')[0].trim();
+                            break;
+                        }
+                    }
+                } else if (/iphone/i.test(ua)) {
+                    fallbackName = "iPhone";
+                } else if (/ipad/i.test(ua)) {
+                    fallbackName = "iPad";
+                }
+            }
+
+            const gpuClean = getGPUClean();
+            let displayName = "";
+            let displayBrand = "";
+
+            if (gpuClean) {
+                displayName = gpuClean;
+
+                if (/Apple/i.test(gpuClean)) {
+                    displayBrand = "Apple";
+                } else if (/Adreno/i.test(gpuClean)) {
+                    displayBrand = "Qualcomm";
+                } else if (/Mali|Immortalis/i.test(gpuClean)) {
+                    displayBrand = "MediaTek";
+                } else if (/Xclipse/i.test(gpuClean)) {
+                    displayBrand = "Samsung";
+                } else if (/GeForce|RTX|GTX|NVIDIA/i.test(gpuClean)) {
+                    displayBrand = "NVIDIA";
+                } else if (/Radeon|AMD/i.test(gpuClean)) {
+                    displayBrand = "AMD";
+                } else if (/Intel/i.test(gpuClean)) {
+                    displayBrand = "Intel";
+                } else {
+                    displayBrand = fallbackBrand;
+                }
+
+                if (displayBrand && displayName.toLowerCase().startsWith(displayBrand.toLowerCase())) {
+                    const candidate = displayName.substring(displayBrand.length).trim();
+                    const cleanCandidate = candidate.toLowerCase();
+                    if (candidate && cleanCandidate !== "gpu" && cleanCandidate !== "graphics" && cleanCandidate !== "igpu") {
+                        displayName = candidate;
+                    }
+                }
+            } else {
+                displayName = fallbackName;
+                displayBrand = fallbackBrand;
+            }
+
+            if (/Apple|M1|M2|M3|M4|iPhone|iPad/i.test(displayName)) {
+                displayBrand = "Apple";
+            }
+
+            $('device-name').textContent = displayName;
+            $('device-info').textContent = displayBrand;
+        }
+
+        // --- 3. Capability Testing ---
+        async function checkMediaCapabilities() {
+            const video = document.createElement('video');
+            
+            async function getCodecStatus(codec) {
+                const canPlay = video.canPlayType(codec);
+                if (canPlay === "") return 'none';
+                
+                let status = (canPlay === 'probably') ? 'full' : 'partial';
+
+                if (navigator.mediaCapabilities && navigator.mediaCapabilities.decodingInfo) {
+                    try {
+                        const result = await navigator.mediaCapabilities.decodingInfo({
+                            type: 'file',
+                            video: {
+                                contentType: codec,
+                                width: 1280,
+                                height: 720,
+                                bitrate: 1000,
+                                framerate: 30
+                            }
+                        });
+                        
+                        if (result.supported) {
+                            if (result.powerEfficient) {
+                                return 'full';
+                            } else {
+                                return 'partial';
+                            }
+                        }
+                    } catch (e) { }
+                }
+                
+                return status;
+            }
+
+            const isIPhone = /iphone/i.test(ua);
+
+            const gpuDatabase = {
+                "Adreno 660": { hevc: 'full', av1: 'partial' },
+                "Adreno 730": { hevc: 'full', av1: 'partial' },
+                "Adreno 740": { hevc: 'full', av1: 'full' },
+                "Adreno 750": { hevc: 'full', av1: 'full' },
+                "Adreno 732": { hevc: 'full', av1: 'full' },
+                "Adreno 735": { hevc: 'full', av1: 'full' },
+                "Adreno 830": { hevc: 'full', av1: 'full' },
+                "Apple A14": { hevc: 'full', av1: 'partial' },
+                "Apple A15": { hevc: 'full', av1: 'partial' },
+                "Apple A16": { hevc: 'full', av1: 'partial' },
+                "Apple A17 Pro": { hevc: 'full', av1: 'full' },
+                "Apple A18": { hevc: 'full', av1: 'full' },
+                "Apple M1": { hevc: 'full', av1: 'partial' },
+                "Apple M2": { hevc: 'full', av1: 'partial' },
+                "Apple M3": { hevc: 'full', av1: 'full' },
+                "Apple M4": { hevc: 'full', av1: 'full' },
+                "Mali-G78": { hevc: 'full', av1: 'full' },
+                "Mali-G710": { hevc: 'full', av1: 'full' },
+                "Mali-G715": { hevc: 'full', av1: 'full' },
+                "Mali-G720": { hevc: 'full', av1: 'full' },
+                "Mali-G610": { hevc: 'full', av1: 'full' },
+                "Mali-G615": { hevc: 'full', av1: 'full' },
+                "Mali-G925": { hevc: 'full', av1: 'full' },
+                "Xclipse 920": { hevc: 'full', av1: 'full' },
+                "Xclipse 940": { hevc: 'full', av1: 'full' }
+            };
+
+            const gpuName = getGPUClean();
+            const matchedSpecs = gpuDatabase[gpuName];
+            const isKnownGPU = !!matchedSpecs;
+            const hwSpecs = matchedSpecs || {};
+
+            const checks = [
+                {
+                    name: "HTML5 Video Core",
+                    desc: "Native web playback support",
+                    check: async () => !!video.canPlayType ? 'full' : 'none'
+                },
+                {
+                    name: "MSE (Media Source Extensions)",
+                    desc: "Foundation for chunked streaming",
+                    check: async () => 'MediaSource' in window ? 'full' : 'none'
+                },
+                {
+                    name: "H.264 (AVC) Decoder",
+                    desc: "Most widely compatible video format",
+                    check: async () => await getCodecStatus('video/mp4; codecs="avc1.42E01E"')
+                },
+                {
+                    name: "H.265 (HEVC) Decoder",
+                    desc: "High quality format, prevents heating & lag",
+                    check: async () => {
+                        if (isIPhone) return 'partial';
+                        
+                        const browserStatus = (await getCodecStatus('video/mp4; codecs="hev1.1.6.L93.B0"') === 'full' || await getCodecStatus('video/mp4; codecs="hvc1"') === 'full') ? 'full' : 'none';
+                        if (!isKnownGPU) {
+                            return browserStatus;
+                        }
+                        const hwStatus = hwSpecs.hevc || 'none';
+                        if (browserStatus === 'full' && hwStatus === 'full') return 'full';
+                        if (browserStatus === 'full' || hwStatus === 'full' || hwStatus === 'partial') return 'partial';
+                        return 'none';
+                    }
+                },
+                {
+                    name: "AV1 Decoder",
+                    desc: "Next-gen high-efficiency format",
+                    check: async () => {
+                        if (isIPhone) return 'partial';
+                        
+                        const browserStatus = await getCodecStatus('video/mp4; codecs="av01.0.05M.08"');
+                        if (!isKnownGPU) {
+                            return browserStatus;
+                        }
+                        const hwStatus = hwSpecs.av1 || 'none';
+                        if (browserStatus === 'full' && hwStatus === 'full') return 'full';
+                        if (browserStatus === 'full' || hwStatus === 'full' || hwStatus === 'partial') return 'partial';
+                        return 'partial'; // Fallback to software decoding representation
+                    }
+                },
+                {
+                    name: "VP9 Decoder",
+                    desc: "Google high-definition format",
+                    check: async () => await getCodecStatus('video/webm; codecs="vp9"')
+                },
+            ];
+
+            const tbody = $('capability-table');
+            tbody.innerHTML = '';
+            
+            let hasHEVC = false, hasHEVCPartial = false;
+            let hasAV1 = false, hasAV1Partial = false;
+
+            for (let i = 0; i < checks.length; i++) {
+                const item = checks[i];
+                const status = await item.check();
+                
+                if (item.name.includes("H.265")) {
+                    if (status === 'full') hasHEVC = true;
+                    if (status === 'partial') hasHEVCPartial = true;
+                }
+                if (item.name.includes("AV1")) {
+                    if (status === 'full') hasAV1 = true;
+                    if (status === 'partial') hasAV1Partial = true;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-700/10 transition-colors align-middle";
+                
+                let iconHtml = '';
+                if (status === 'full') {
+                    iconHtml = `<i data-lucide="check" class="w-5 h-5 text-primary"></i>`;
+                } else if (status === 'partial') {
+                    iconHtml = `<i data-lucide="check" class="w-5 h-5 text-gray-500"></i>`;
+                } else {
+                    iconHtml = `<i data-lucide="x" class="w-5 h-5 text-secondary"></i>`;
+                }
+
+                tr.innerHTML = `
+                    <td class="py-2 px-4 text-center text-gray-500 font-mono">${i + 1}</td>
+                    <td class="py-2 px-2">
+                        <div class="font-bold text-sm">${item.name}</div>
+                        <div class="text-[10px] text-gray-500 md:hidden mt-0.5">${item.desc}</div>
+                    </td>
+                    <td class="py-2 px-2 text-center">
+                        <div class="flex justify-center">
+                            ${iconHtml}
+                        </div>
+                    </td>
+                    <td class="py-2 px-4 text-gray-400 text-xs hidden md:table-cell">${item.desc}</td>
+                `;
+                tbody.appendChild(tr);
+            }
+            
+            lucide.createIcons();
+
+            let score = "Normal";
+            let tip = "Older device. Server transcoding recommended.";
+            
+            const hevcSupported = hasHEVC || hasHEVCPartial;
+            const av1Supported = hasAV1 || hasAV1Partial;
+
+            if (hasHEVC && hasAV1) {
+                score = "Perfect";
+                tip = "Hardware decoding for all formats. Excellent experience!";
+            } else if (hasHEVC || (hevcSupported && av1Supported)) {
+                score = "Good";
+                tip = "Mainstream formats supported. Smooth playback.";
+            }
+
+            $('exp-summary').textContent = tip;
+            $('exp-score').textContent = score;
+        }
+
+        // Run Detectors
+        detectEnvironment();
+        detectDevice();
+        checkMediaCapabilities();
+    </script>
+</body>
+
+</html>
