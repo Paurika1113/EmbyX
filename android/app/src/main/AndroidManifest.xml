@@ -10,7 +10,8 @@
         android:label="EmbyX"
         android:supportsRtl="true"
         android:theme="@style/Theme.EmbyX"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
