@@ -22,12 +22,16 @@ public class MainActivity extends AppCompatActivity {
         settings.setDomStorageEnabled(true);
         settings.setAllowContentAccess(true);
         settings.setAllowFileAccess(true);
+        settings.setAllowFileAccessFromFileURLs(true);
+        settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         settings.setBlockNetworkLoads(false);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-        settings.setUserAgentString(settings.getUserAgentString() + " EmbyX-Android/1.0");
+        settings.setBuiltInZoomControls(false);
+        settings.setDatabaseEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -37,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, android.net.http.SslError error) {
-                // Allow all SSL errors to support user-configured Emby servers
                 handler.proceed();
             }
         });
 
-        // Load the EmbyX web app
-        webView.loadUrl("https://embyx.5nav.eu.org");
+        // Load EmbyX from bundled assets (avoids CORS and mixed-content issues)
+        webView.loadUrl("file:///android_asset/en/index.html");
     }
 
     @Override
