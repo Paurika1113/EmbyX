@@ -142,187 +142,7 @@
                 filter: drop-shadow(0 0 6px rgba(82, 181, 75, 0.6));
             }
 
-            /* ─── Long Mode Styles ─── */
-
-            .long-container {
-                @apply fixed inset-0 z-[70] bg-black;
-            }
-            .long-container.hidden { display: none; }
-
-            .long-player-layer {
-                @apply absolute inset-0 z-[80] bg-black;
-            }
-            .long-player-layer.hidden { display: none; }
-
-            .long-topbar {
-                @apply absolute top-0 left-0 right-0 z-[90] px-4 pt-[env(safe-area-inset-top)] pb-3 flex items-center;
-                background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-            .long-topbar.visible { opacity: 1; }
-
-            .long-bottombar {
-                @apply absolute bottom-0 left-0 right-0 z-[90] px-4 pb-[max(8px,env(safe-area-inset-bottom))] pt-10;
-                background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-            .long-bottombar.visible { opacity: 1; }
-
-            .long-seekbar {
-                @apply relative w-full h-1.5 bg-white/20 rounded-full cursor-pointer group;
-            }
-            .long-seekbar:hover { @apply h-2.5; }
-            .long-seekbar .progress {
-                @apply absolute top-0 left-0 h-full bg-primary rounded-full pointer-events-none;
-            }
-            .long-seekbar .chapter-mark {
-                @apply absolute top-0 w-0.5 h-full bg-white/60 pointer-events-none;
-            }
-            .long-seekbar .chapter-mark.played {
-                @apply bg-primary/80;
-            }
-            .long-seekbar .thumb {
-                @apply absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg pointer-events-none;
-                display: none;
-            }
-            .long-seekbar:hover .thumb { display: block; }
-
-            .long-controls {
-                @apply flex items-center justify-center space-x-4 mt-2;
-            }
-            .long-controls button {
-                @apply text-white/80 hover:text-white transition-colors flex items-center justify-center;
-            }
-            .long-play-btn {
-                @apply w-12 h-12 bg-white/15 hover:bg-white/25 rounded-full flex items-center justify-center transition-all;
-            }
-
-            .long-browse {
-                @apply w-full h-full flex flex-col overflow-hidden;
-            }
-
-            .long-dashboard-title {
-                @apply text-white text-lg font-bold px-4 py-3;
-            }
-
-            .long-section-scroll {
-                @apply overflow-x-auto overflow-y-hidden whitespace-nowrap px-4 pb-2 space-x-3;
-                scrollbar-width: none;
-            }
-            .long-section-scroll::-webkit-scrollbar { display: none; }
-
-            .long-card {
-                @apply inline-flex flex-col w-32 flex-shrink-0 cursor-pointer active:scale-95 transition-transform;
-            }
-            .long-card-poster {
-                @apply w-full aspect-[2/3] rounded-lg bg-gray-800 overflow-hidden relative;
-            }
-            .long-card-poster img {
-                @apply w-full h-full object-cover;
-            }
-            .long-card-title {
-                @apply text-white text-xs mt-1.5 truncate;
-            }
-            .long-card-sub {
-                @apply text-gray-400 text-[10px] truncate;
-            }
-            .long-card-progress {
-                @apply absolute bottom-0 left-0 right-0 h-0.5 bg-white/30;
-            }
-            .long-card-progress-bar {
-                @apply h-full bg-primary;
-            }
-
-            .long-lib-grid {
-                @apply grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 px-4 pb-4;
-            }
-            .long-lib-item {
-                @apply flex flex-col items-center justify-center aspect-square rounded-2xl cursor-pointer
-                       bg-gray-800/60 hover:bg-gray-700/60 border border-gray-700/30 active:scale-95
-                       transition-all text-center p-2;
-            }
-            .long-lib-item i {
-                @apply w-8 h-8 mb-1 text-primary;
-            }
-            .long-lib-item span {
-                @apply text-white text-xs font-medium;
-            }
-
-            .long-episode-list {
-                @apply px-4 pb-4 space-y-2 overflow-y-auto flex-1;
-            }
-            .long-episode-item {
-                @apply flex items-center px-3 py-2.5 rounded-lg cursor-pointer active:scale-[0.98]
-                       bg-gray-800/30 hover:bg-gray-700/40 border border-transparent hover:border-gray-700/50
-                       transition-all;
-            }
-            .long-episode-num {
-                @apply w-10 text-center text-gray-400 text-sm font-mono flex-shrink-0;
-            }
-            .long-episode-info {
-                @apply flex-1 min-w-0 ml-2;
-            }
-            .long-episode-title {
-                @apply text-white text-sm truncate;
-            }
-            .long-episode-meta {
-                @apply text-gray-400 text-[11px] mt-0.5;
-            }
-            .long-episode-action {
-                @apply flex-shrink-0 ml-2;
-            }
-
-            .long-season-tabs {
-                @apply flex px-4 py-2 space-x-2 overflow-x-auto;
-                scrollbar-width: none;
-            }
-            .long-season-tabs::-webkit-scrollbar { display: none; }
-            .long-season-tab {
-                @apply px-4 py-1.5 rounded-full text-xs font-medium cursor-pointer
-                       bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white
-                       transition-all flex-shrink-0;
-            }
-            .long-season-tab.active {
-                @apply bg-primary/20 text-primary border border-primary/30;
-            }
-
-            .long-upnext {
-                @apply absolute bottom-24 right-4 z-[95] bg-gray-900/95 backdrop-blur-xl
-                       rounded-xl border border-gray-700/50 shadow-2xl p-4 w-72;
-                display: none;
-            }
-            .long-upnext.show { display: block; }
-
-            .long-picker {
-                @apply absolute inset-0 z-[100] bg-black/50 flex items-end justify-center;
-                display: none;
-            }
-            .long-picker.show { display: flex; }
-            .long-picker-panel {
-                @apply w-full bg-gray-900/95 backdrop-blur-xl rounded-t-2xl p-4
-                       max-h-[50vh] overflow-y-auto border-t border-gray-700/50;
-            }
-            .long-picker-item {
-                @apply px-4 py-3 rounded-lg text-sm cursor-pointer
-                       hover:bg-gray-700/50 transition-colors;
-            }
-            .long-picker-item.active {
-                @apply text-primary bg-primary/10;
-            }
-
-            .long-browse-header {
-                @apply flex items-center px-4 py-3 border-b border-gray-800/50 flex-shrink-0;
-            }
-            .long-browse-header .back {
-                @apply w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white;
-            }
-            .long-browse-header .title {
-                @apply flex-1 text-white font-bold text-lg ml-1;
-            }
-
-            /* Hide ugly default play button in some Android WebViews */
+            /* Long Mode & PiP */ .lm-o{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background:#000;display:none;flex-direction:column}.lm-o.on{display:flex}.lm-t{position:absolute;top:0;left:0;right:0;z-index:1010;padding:max(8px,env(safe-area-inset-top)) 12px 8px;background:linear-gradient(180deg,rgba(0,0,0,.85),transparent);display:flex;align-items:center;opacity:0;transition:opacity .3s}.lm-t.show{opacity:1}.lm-b{position:absolute;bottom:0;left:0;right:0;z-index:1010;padding:32px 12px max(8px,env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);opacity:0;transition:opacity .3s}.lm-b.show{opacity:1}.lm-p{position:relative;width:100%;height:4px;background:rgba(255,255,255,.2);border-radius:2px;cursor:pointer;margin-bottom:8px}.lm-pb{height:100%;background:#52B54B;border-radius:2px;width:0;transition:width .1s linear}.lm-c{display:flex;align-items:center;justify-content:center;gap:16px}.lm-c button{color:rgba(255,255,255,.8);background:0;border:0;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center}.lm-cb{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center}.lm-br{flex:1;overflow-y:auto}.lm-sc{color:#fff;font-size:15px;font-weight:700;padding:16px 16px 8px}.lm-rw{display:flex;gap:10px;overflow-x:auto;padding:0 16px 8px;scrollbar-width:none}.lm-cd{flex-shrink:0;width:120px;cursor:pointer}.lm-cd img{width:100%;aspect-ratio:2/3;border-radius:8px;object-fit:cover;background:#222}.lm-cd .t{color:#fff;font-size:11px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lm-gr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 16px}.lm-it{cursor:pointer}.lm-it img{width:100%;aspect-ratio:2/3;border-radius:8px;object-fit:cover;background:#222}.lm-it .n{color:#fff;font-size:11px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pip-b{position:fixed;bottom:100px;right:16px;width:160px;z-index:2000;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.5);cursor:pointer;display:none;background:#000;border:1px solid rgba(255,255,255,.1)}.pip-b.on{display:block}.pip-b video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.pip-b .x{position:absolute;top:2px;right:2px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.6);border:0;color:#fff;font-size:12px;cursor:pointer;display:flex;z-index:1}.pip-b .l{position:absolute;bottom:0;left:0;right:0;padding:2px 4px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lm-s{display:flex;gap:6px;padding:8px 16px;overflow-x:auto;scrollbar-width:none}.lm-s button{padding:4px 14px;border-radius:999px;font-size:12px;cursor:pointer;white-space:nowrap;background:#222;color:#999;border:0}.lm-s button.a{background:rgba(82,181,75,.2);color:#52B54B}.lm-e{display:flex;align-items:center;padding:8px 16px;cursor:pointer;gap:8px;color:#fff;font-size:13px}.lm-e:hover{background:rgba(255,255,255,.05)}.lm-e .e1{width:32px;flex-shrink:0;text-align:center;color:#888}.lm-e .e2{flex:1;min-width:0}.lm-e .e3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lm-e .e4{color:#666;font-size:11px}.lm-u{position:absolute;bottom:100px;right:16px;z-index:1020;background:rgba(20,20,20,.95);border-radius:12px;padding:12px;width:260px;border:1px solid rgba(255,255,255,.1);display:none}.lm-u.on{display:block}.lm-l{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1010;width:32px;height:32px;border:3px solid rgba(255,255,255,.2);border-top-color:#52B54B;border-radius:50%;animation:lsp .8s linear infinite;display:none}.lm-l.on{display:block}@keyframes lsp{to{transform:translate(-50%,-50%) rotate(360deg)}}  /* Hide ugly default play button */ in some Android WebViews */
             video::-webkit-media-controls-start-playback-button {
                 display: none !important;
                 -webkit-appearance: none;
@@ -490,7 +310,10 @@
                 <div id="libraryBtn" class="nav-btn text-gray-400">
                     <i data-lucide="folder-open" class="stroke-current w-5 h-5"></i>
                 </div>
-                <div id="modeSwitchBtn" class="nav-btn text-gray-400">
+                <div id="longModeBtn" class="nav-btn text-gray-400">
+                    <i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>
+                </div>
+                <div id="lmBtn" class="nav-btn text-gray-400">
                     <i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>
                 </div>
                 <div id="myBtn" class="nav-btn text-gray-400">
@@ -579,8 +402,7 @@
                                 class="focusable-item flex items-center justify-between py-2.5 px-3 bg-gray-900/40 rounded-lg border border-transparent hover:bg-gray-800/60 transition-all cursor-pointer group"
                                 onclick="document.getElementById('configLongMode').click();">
                                 <label for="configLongMode"
-                                    class="text-gray-300 text-sm cursor-pointer flex-1 font-medium">Long Video Mode
-                                    <span class="text-[10px] text-gray-500 font-normal ml-1">Movies &amp; TV</span></label>
+                                    class="text-gray-300 text-sm cursor-pointer flex-1 font-medium">Long Video Mode</label>
                                 <input type="checkbox" id="configLongMode"
                                     class="rounded text-primary bg-gray-700 border-none w-4 h-4 pointer-events-none">
                             </div>
@@ -786,107 +608,11 @@
             class="fixed top-16 left-1/2 -translate-x-1/2 bg-black/50 px-4 py-2 rounded-2xl text-white text-sm pointer-events-none transition-opacity duration-300 opacity-0 z-[100] w-max max-w-[80vw] whitespace-normal text-center border border-white/10 backdrop-blur-sm">
             Message
         </div>
-        <div id="loading"
+        <div class="pip-b" id="pipB"><video id="pipV" playsinline webkit-playsinline></video><button class="x" id="pipX">X</button><div class="l" id="pipL"></div></div>
+    <div class="lm-o" id="lmO"><div class="lm-br" id="lmBr"></div><div class="lm-l" id="lmLd"></div></div>
+    <div id="loading"
             class="fixed inset-0 z-40 flex items-center justify-center bg-transparent pointer-events-none hidden">
             <div class="w-10 h-10 border-4 border-gray-600 border-t-primary rounded-full animate-spin"></div>
-        </div>
-    </div>
-    <!-- ─── Long Mode Container ─── -->
-    <div id="longContainer" class="long-container hidden">
-        <!-- Browse Layer -->
-        <div id="longBrowse" class="long-browse"></div>
-        
-        <!-- Player Layer -->
-        <div id="longPlayer" class="long-player-layer hidden">
-            <video id="longVideo" class="w-full h-full object-contain" playsinline webkit-playsinline></video>
-            <div id="longSpinner" class="absolute inset-0 z-[85] flex items-center justify-center bg-black/30 pointer-events-none hidden">
-                <div class="w-10 h-10 border-4 border-gray-600 border-t-primary rounded-full animate-spin"></div>
-            </div>
-            
-            <!-- Top bar -->
-            <div id="longTopBar" class="long-topbar">
-                <button id="longBackBtn" class="w-10 h-10 flex items-center justify-center text-white/80 hover:text-white">
-                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                </button>
-                <div class="flex-1 min-w-0 ml-1">
-                    <div id="longPlayerTitle" class="text-white text-sm font-medium truncate"></div>
-                    <div id="longPlayerSub" class="text-gray-300 text-[11px] truncate"></div>
-                </div>
-                <button id="longSubBtn" class="w-9 h-9 flex items-center justify-center text-white/70 hover:text-white" title="Subtitles">
-                    <i data-lucide="subtitles" class="w-4 h-4"></i>
-                </button>
-                <button id="longAudioBtn" class="w-9 h-9 flex items-center justify-center text-white/70 hover:text-white" title="Audio">
-                    <i data-lucide="music" class="w-4 h-4"></i>
-                </button>
-                <button id="longSettingsBtn" class="w-9 h-9 flex items-center justify-center text-white/70 hover:text-white" title="Settings">
-                    <i data-lucide="settings" class="w-4 h-4"></i>
-                </button>
-            </div>
-            
-            <!-- Bottom bar -->
-            <div id="longBottomBar" class="long-bottombar">
-                <div class="flex items-center space-x-3 mb-2">
-                    <span id="longCurTime" class="text-white text-xs font-mono tabular-nums flex-shrink-0">00:00</span>
-                    <div id="longSeek" class="long-seekbar flex-1" onclick="event.stopPropagation()">
-                        <div id="longSeekProgress" class="progress"></div>
-                        <div id="longChapterMarks"></div>
-                        <div class="thumb" id="longSeekThumb"></div>
-                    </div>
-                    <span id="longTotalTime" class="text-white text-xs font-mono tabular-nums flex-shrink-0">00:00</span>
-                </div>
-                <div class="long-controls">
-                    <button id="longPrevChapterBtn" title="Previous Chapter">
-                        <i data-lucide="skip-back" class="w-5 h-5"></i>
-                    </button>
-                    <button id="longRewindBtn" title="Rewind 10s">
-                        <i data-lucide="rewind" class="w-5 h-5"></i>
-                    </button>
-                    <button id="longPlayBtn" class="long-play-btn" title="Play/Pause">
-                        <i data-lucide="pause" class="w-5 h-5"></i>
-                    </button>
-                    <button id="longForwardBtn" title="Forward 10s">
-                        <i data-lucide="fast-forward" class="w-5 h-5"></i>
-                    </button>
-                    <button id="longNextChapterBtn" title="Next Chapter">
-                        <i data-lucide="skip-forward" class="w-5 h-5"></i>
-                    </button>
-                    <div class="w-px h-6 bg-white/15 mx-1"></div>
-                    <button id="longSpeedBtn" class="text-xs font-bold text-white/70 px-2 py-1 rounded bg-white/10 hover:bg-white/20">1.0x</button>
-                    <button id="longVolumeBtn" title="Volume">
-                        <i data-lucide="volume-2" class="w-5 h-5"></i>
-                    </button>
-                    <button id="longFsBtn" title="Fullscreen">
-                        <i data-lucide="maximize" class="w-5 h-5"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Up Next -->
-            <div id="longUpNext" class="long-upnext">
-                <div class="flex items-start space-x-3">
-                    <div class="flex-shrink-0 w-16 aspect-[2/3] rounded bg-gray-800 overflow-hidden">
-                        <img id="longNextPoster" class="w-full h-full object-cover" src="" alt="">
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="text-[10px] text-gray-400 uppercase tracking-wide">Up Next</div>
-                        <div id="longNextTitle" class="text-white text-sm font-medium truncate"></div>
-                        <div id="longNextMeta" class="text-gray-400 text-xs mt-0.5"></div>
-                        <div id="longNextCountdown" class="text-primary text-xs font-bold mt-2">Playing in 15s</div>
-                    </div>
-                    <button id="longNextCloseBtn" class="flex-shrink-0 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white">
-                        <i data-lucide="x" class="w-4 h-4"></i>
-                    </button>
-                </div>
-                <div class="mt-3 flex space-x-2">
-                    <button id="longNextCancelBtn" class="flex-1 py-1.5 text-xs rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 transition-colors">Cancel</button>
-                    <button id="longNextPlayBtn" class="flex-1 py-1.5 text-xs rounded-lg bg-primary text-white font-bold hover:bg-primary/90 transition-colors">Play Now</button>
-                </div>
-            </div>
-            
-            <!-- Picker overlay for subtitles/audio -->
-            <div id="longPicker" class="long-picker" onclick="if(event.target===this) longPlayer.hidePicker()">
-                <div id="longPickerPanel" class="long-picker-panel"></div>
-            </div>
         </div>
     </div>
     <script>
@@ -927,11 +653,10 @@
                     lastSelectedPlaylist: null,
                     itemPlaylistsMap: {},
                     currentTag: null,
-                    isFilteredByTag: false,
-                    longMode: false
+                    isFilteredByTag: false
                 };
 
-                this.config = { server: '', user: '', token: '', userId: '', useStatic: true, autoplay: true, shortDrama: false, deleteMode: false, longMode: false };
+                this.config = { server: '', user: '', token: '', userId: '', useStatic: true, autoplay: true, shortDrama: false, deleteMode: false };
 
                 this.csTimer = null;
 
@@ -1012,10 +737,7 @@
 
                 lucide.createIcons();
 
-                // Long mode setting
-                this.state.longMode = this.config.longMode;
-
-                if (this.state.longMode) {
+                if (localStorage.getItem('emby_long_mode') === 'true') {
                     this.activateLongMode();
                 } else if (this.config.server && this.config.token) {
                     this.fetchVideos(this.state.currentLibraryId, null, false, this.state.playMode === 'random');
@@ -1091,40 +813,6 @@
                     'deleteConfirmModal', 'confirmDeleteBtn', 'cancelDeleteBtn', 'deleteFileName',
                     'configServer', 'configUser', 'configPwd', 'configStatic', 'configAutoplay', 'configShortDrama', 'configDeleteMode'
                 ];
-                // Long mode DOM elements: cached separately via getElementById when needed
-                this.dom.longContainer = document.getElementById('longContainer');
-                this.dom.longBrowse = document.getElementById('longBrowse');
-                this.dom.longPlayer = document.getElementById('longPlayer');
-                this.dom.longVideo = document.getElementById('longVideo');
-                this.dom.longTopBar = document.getElementById('longTopBar');
-                this.dom.longBottomBar = document.getElementById('longBottomBar');
-                this.dom.longSeek = document.getElementById('longSeek');
-                this.dom.longSeekProgress = document.getElementById('longSeekProgress');
-                this.dom.longChapterMarks = document.getElementById('longChapterMarks');
-                this.dom.longCurTime = document.getElementById('longCurTime');
-                this.dom.longTotalTime = document.getElementById('longTotalTime');
-                this.dom.longPlayBtn = document.getElementById('longPlayBtn');
-                this.dom.longBackBtn = document.getElementById('longBackBtn');
-                this.dom.longFsBtn = document.getElementById('longFsBtn');
-                this.dom.longSpeedBtn = document.getElementById('longSpeedBtn');
-                this.dom.longVolumeBtn = document.getElementById('longVolumeBtn');
-                this.dom.longRewindBtn = document.getElementById('longRewindBtn');
-                this.dom.longForwardBtn = document.getElementById('longForwardBtn');
-                this.dom.longPrevChapterBtn = document.getElementById('longPrevChapterBtn');
-                this.dom.longNextChapterBtn = document.getElementById('longNextChapterBtn');
-                this.dom.longSubBtn = document.getElementById('longSubBtn');
-                this.dom.longAudioBtn = document.getElementById('longAudioBtn');
-                this.dom.longSettingsBtn = document.getElementById('longSettingsBtn');
-                this.dom.longPlayerTitle = document.getElementById('longPlayerTitle');
-                this.dom.longPlayerSub = document.getElementById('longPlayerSub');
-                this.dom.longUpNext = document.getElementById('longUpNext');
-                this.dom.longNextTitle = document.getElementById('longNextTitle');
-                this.dom.longNextMeta = document.getElementById('longNextMeta');
-                this.dom.longNextPoster = document.getElementById('longNextPoster');
-                this.dom.longNextCountdown = document.getElementById('longNextCountdown');
-                this.dom.longPicker = document.getElementById('longPicker');
-                this.dom.longPickerPanel = document.getElementById('longPickerPanel');
-                this.dom.modeSwitchBtn = document.getElementById('modeSwitchBtn');
                 ids.forEach(id => this.dom[id] = document.getElementById(id));
                 this.dom.rightToolbar = document.querySelector('.right-toolbar');
             }
@@ -1177,8 +865,8 @@
                 if (this.dom.configAutoplay) this.dom.configAutoplay.checked = this.config.autoplay;
                 if (this.dom.configShortDrama) this.dom.configShortDrama.checked = this.config.shortDrama;
                 if (this.dom.configDeleteMode) this.dom.configDeleteMode.checked = this.config.deleteMode;
-                const longModeCheckbox = document.getElementById('configLongMode');
-                if (longModeCheckbox) longModeCheckbox.checked = this.config.longMode;
+                let _lmCb = document.getElementById('configLongMode');
+                if (_lmCb) _lmCb.checked = this.config.longMode;
 
                 // Sync UI based on config
                 this.dom.deleteBtn.style.display = this.config.deleteMode ? 'flex' : 'none';
@@ -3664,9 +3352,9 @@
                 this.dom.viewModeBtn.onclick = () => this.toggleViewMode();
                 this.dom.playModeBtn.onclick = () => this.togglePlayMode();
                 this.dom.libraryBtn.onclick = () => this.showLibraries();
+                this.dom.lmBtn = document.getElementById('lmBtn');
+                this.dom.lmBtn.onclick = () => this.toggleLongMode();
                 this.dom.myBtn.onclick = () => this.toggleModal('profilePage', true);
-                this.dom.modeSwitchBtn = document.getElementById('modeSwitchBtn');
-                this.dom.modeSwitchBtn.onclick = () => this.toggleLongMode();
 
                 document.querySelectorAll('.nav-btn').forEach(btn => {
                     btn.addEventListener('click', function () {
@@ -4341,1161 +4029,115 @@
                     .replace(/'/g, '&#039;');
             }
 
-            // ─── Long Mode Methods ───
-
+            // Long mode & PiP
             toggleLongMode() {
-                this.state.longMode = !this.state.longMode;
-                localStorage.setItem('emby_long_mode', this.state.longMode);
-                if (this.state.longMode) {
-                    this.activateLongMode();
+                const ov = document.getElementById('lmO');
+                const on = !ov.classList.contains('on');
+                localStorage.setItem('emby_long_mode', on);
+                if (on) {
+                    ov.classList.add('on');
+                    document.getElementById('app').classList.add('hidden');
+                    document.getElementById('lmBtn').innerHTML = '<i data-lucide="video" class="stroke-current w-5 h-5"></i>';
+                    document.getElementById('lmBtn').classList.add('nav-clicked');
+                    lucide.createIcons();
+                    if (!window.longPlayer) window.longPlayer = new LongModePlayer(this);
+                    window.longPlayer.init();
                 } else {
-                    this.deactivateLongMode();
+                    if (window.longPlayer) window.longPlayer.destroy();
+                    ov.classList.remove('on');
+                    document.getElementById('app').classList.remove('hidden');
+                    document.getElementById('lmBtn').innerHTML = '<i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>';
+                    document.getElementById('lmBtn').classList.remove('nav-clicked');
+                    lucide.createIcons();
+                    if (this.config.server && this.config.token) this.fetchVideos(this.state.currentLibraryId, null, false, this.state.playMode === 'random');
                 }
             }
 
-            activateLongMode() {
-                // Stop any current short mode playback
-                if (this.dom.videoContainer) {
-                    const slides = this.dom.videoContainer.querySelectorAll('video');
-                    slides.forEach(v => { v.pause(); v.src = ''; });
-                }
-                // Switch UI
-                document.getElementById('app').classList.add('hidden');
-                this.dom.longContainer.classList.remove('hidden');
-                // Update bottom nav icon
-                const modeBtn = this.dom.modeSwitchBtn;
-                if (modeBtn) {
-                    modeBtn.innerHTML = '<i data-lucide="video" class="stroke-current w-5 h-5"></i>';
-                    modeBtn.classList.add('nav-clicked');
-                }
-                lucide.createIcons();
-                // Initialize LongModePlayer
-                if (!window.longPlayer) {
-                    window.longPlayer = new LongModePlayer(this);
-                }
-                window.longPlayer.renderDashboard();
+            enterPip(videoEl, title) {
+                const box = document.getElementById('pipB');
+                const pv = document.getElementById('pipV');
+                const parent = videoEl.parentNode;
+                const next = videoEl.nextSibling;
+                pv.src = videoEl.currentSrc || videoEl.src;
+                pv.currentTime = videoEl.currentTime;
+                pv.play();
+                box.classList.add('on');
+                document.getElementById('pipL').textContent = title || '';
+                box._ret = { parent, next, old: videoEl };
+                videoEl.pause();
+                videoEl.remove();
+                document.getElementById('pipX').onclick = (e) => { e.stopPropagation(); this.exitPip(); };
+                box.onclick = () => this.exitPip(true);
             }
 
-            deactivateLongMode() {
-                if (window.longPlayer) {
-                    window.longPlayer.closePlayer();
+            exitPip(play = false) {
+                const box = document.getElementById('pipB');
+                const pv = document.getElementById('pipV');
+                box.classList.remove('on');
+                if (box._ret) {
+                    pv.pause();
+                    if (box._ret.old) {
+                        box._ret.old.src = pv.src;
+                        box._ret.old.currentTime = pv.currentTime;
+                        if (play) box._ret.old.play();
+                        if (box._ret.next) box._ret.parent.insertBefore(box._ret.old, box._ret.next);
+                        else box._ret.parent.appendChild(box._ret.old);
+                    }
                 }
-                this.dom.longContainer.classList.add('hidden');
-                document.getElementById('app').classList.remove('hidden');
-                const modeBtn = this.dom.modeSwitchBtn;
-                if (modeBtn) {
-                    modeBtn.innerHTML = '<i data-lucide="clapperboard" class="stroke-current w-5 h-5"></i>';
-                    modeBtn.classList.remove('nav-clicked');
-                }
-                lucide.createIcons();
-                if (this.config.server && this.config.token) {
-                    this.fetchVideos(this.state.currentLibraryId, null, false, this.state.playMode === 'random');
-                }
+                pv.removeAttribute('src');
+                pv.load();
+                delete box._ret;
             }
         }
 
-        // ─── LongModePlayer Class ───
+        // LongModePlayer
         class LongModePlayer {
-            constructor(app) {
-                this.app = app;
-                this.state = {
-                    mode: 'dashboard', // dashboard | library | series | player
-                    currentLibraryId: null,
-                    currentSeries: null,
-                    currentSeason: null,
-                    currentEpisode: null,
-                    chapters: [],
-                    subtitleStreams: [],
-                    audioStreams: [],
-                    playbackRate: 1.0,
-                    osdTimer: null,
-                    upNextTimer: null,
-                    isPlaying: false
-                };
-                this.dom = {};
-                this._cacheDOM();
-                this._bindOSD();
+            constructor(a) { this.app = a; this.state = {}; this._bk(); }
+            init() { this._dash(); }
+            destroy() { this._cp(); document.getElementById('lmBr').innerHTML = ''; }
+
+            _dash() {
+                const br=document.getElementById('lmBr');
+                br.innerHTML='<div style="padding:40% 0;text-align:center"><i data-lucide="loader-2" class="w-8 h-8 animate-spin" style="color:#555"></i></div>';
+                lucide.createIcons({root:br});
+                const{server,token,userId}=this.app.config;
+                if(!server||!token){br.innerHTML='<div style="padding:40% 0;text-align:center;color:#888">Configure server in Profile</div>';return;}
+                const ak='api_key='+token;
+                Promise.all([
+                    fetch(server+'/emby/Library/MediaFolders?'+ak).then(r=>r.json()).then(d=>d.Items||[]).catch(()=>[]),
+                    fetch(server+'/emby/Users/'+userId+'/Items/Resume?Limit=10&'+ak).then(r=>r.json()).then(d=>d.Items||[]).catch(()=>[]),
+                    fetch(server+'/emby/Users/'+userId+'/Items/Latest?Limit=18&'+ak).then(r=>r.json()).catch(()=>[])
+                ]).then(([libs,resume,latest])=>{
+                    const esc=this.app.escapeHtml;const img=i=>this.app.getImageSrc(i);
+                    let h='<div style="padding:12px 16px;color:#fff;font-size:20px;font-weight:700">EmbyX <span style="font-size:10px;background:rgba(82,181,75,.2);color:#52B54B;padding:2px 8px;border-radius:999px;font-weight:400">Long Mode</span></div>';
+                    if(resume.length){h+='<div class="lm-sc">Continue Watching</div><div class="lm-rw">';
+                    resume.forEach(i=>{h+='<div class="lm-cd" onclick="longPlayer._play(\''+i.Id+'\')"><img src="'+img(i)+'" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>\'"><div class="t">'+esc(i.Name)+'</div></div>';});h+='</div>';}
+                    h+='<div class="lm-sc">Libraries</div><div class="lm-gr">';
+                    libs.forEach(l=>{h+='<div class="lm-it" onclick="longPlayer._lib(\''+l.Id+'\')"><div style="aspect-ratio:1;border-radius:12px;background:#222;display:flex;align-items:center;justify-content:center;margin-bottom:4px"><i data-lucide="'+(l.CollectionType==='movies'?'film':l.CollectionType==='tvshows'?'tv':'folder')+'" style="width:28px;height:28px;color:#52B54B"></i></div><div class="n">'+esc(l.Name)+'</div></div>';});h+='</div>';
+                    if(latest.length){h+='<div class="lm-sc">Recently Added</div><div class="lm-gr">';
+                    latest.forEach(i=>{h+='<div class="lm-it" onclick="longPlayer._play(\''+i.Id+'\')"><img src="'+img(i)+'" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>\'"><div class="n">'+esc(i.Name)+'</div></div>';});h+='</div>';}
+                    br.innerHTML=h;
+                    lucide.createIcons({root:br});
+                }).catch(()=>{br.innerHTML='<div style="padding:40% 0;text-align:center;color:#888">Connection failed</div>';});
             }
-
-            _cacheDOM() {
-                const ids = [
-                    'longBrowse', 'longPlayer', 'longVideo',
-                    'longTopBar', 'longBottomBar', 'longSeek',
-                    'longSeekProgress', 'longChapterMarks',
-                    'longCurTime', 'longTotalTime',
-                    'longPlayBtn', 'longBackBtn',
-                    'longFsBtn', 'longSpeedBtn', 'longVolumeBtn',
-                    'longRewindBtn', 'longForwardBtn',
-                    'longPrevChapterBtn', 'longNextChapterBtn',
-                    'longSubBtn', 'longAudioBtn', 'longSettingsBtn',
-                    'longPlayerTitle', 'longPlayerSub',
-                    'longUpNext', 'longNextTitle', 'longNextMeta',
-                    'longNextPoster', 'longNextCountdown',
-                    'longPicker', 'longPickerPanel'
-                ];
-                ids.forEach(id => this.dom[id] = document.getElementById(id));
-                this.dom.longNextCancelBtn = document.getElementById('longNextCancelBtn');
-                this.dom.longNextCloseBtn = document.getElementById('longNextCloseBtn');
-                this.dom.longNextPlayBtn = document.getElementById('longNextPlayBtn');
-                this.dom.longSpinner = document.getElementById('longSpinner');
-            }
-
-            // ─── Dashboard ───
-
-            async renderDashboard() {
-                this.state.mode = 'dashboard';
-                const browse = this.dom.longBrowse;
-                browse.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>`;
-                lucide.createIcons({ root: browse });
-
-                try {
-                    const { server, token, userId } = this.app.config;
-                    const ak = 'api_key=' + token;
-
-                    // Fetch libraries
-                    const libRes = await fetch(server + '/emby/Library/MediaFolders?' + ak);
-                    const libData = await libRes.json();
-                    const libraries = libData.Items || [];
-
-                    // Fetch resume items
-                    let resumeItems = [];
-                    try {
-                        const resumeRes = await fetch(server + '/emby/Users/' + userId + '/Items/Resume?Limit=12&' + ak);
-                        const resumeData = await resumeRes.json();
-                        resumeItems = resumeData.Items || [];
-                    } catch(e) { /* ignore */ }
-
-                    // Fetch latest
-                    let latestItems = [];
-                    try {
-                        const latestRes = await fetch(server + '/emby/Users/' + userId + '/Items/Latest?Limit=24&' + ak);
-                        latestItems = await latestRes.json() || [];
-                    } catch(e) { /* ignore */ }
-
-                    this._renderDashboardHTML(libraries, resumeItems, latestItems);
-                } catch (e) {
-                    browse.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-gray-400 space-y-3">
-                        <i data-lucide="alert-circle" class="w-12 h-12 text-gray-600"></i>
-                        <p class="text-sm">Cannot connect to server</p>
-                        <p class="text-xs text-gray-500">Go to Profile to configure</p>
-                    </div>`;
-                    lucide.createIcons({ root: browse });
-                }
-            }
-
-            _renderDashboardHTML(libraries, resumeItems, latestItems) {
-                const esc = (s) => this.app.escapeHtml(s || '');
-
-                let resumeHtml = '';
-                if (resumeItems.length > 0) {
-                    resumeHtml = `
-                        <div class="long-dashboard-title">Continue Watching</div>
-                        <div class="long-section-scroll">
-                            ${resumeItems.map(item => `
-                                <div class="long-card" onclick="longPlayer.openPlayer('${esc(item.Id)}')">
-                                    <div class="long-card-poster">
-                                        <img src="${esc(this.app.getImageSrc(item))}" alt="" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>'">
-                                        <div class="long-card-progress">
-                                            <div class="long-card-progress-bar" style="width:${Math.round((item.UserData||{}).PlayedPercentage||0)}%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="long-card-title">${esc(item.Name)}</div>
-                                    <div class="long-card-sub">${item.Type === 'Episode' ? 'S'+(item.ParentIndexNumber||'?')+'E'+(item.IndexNumber||'?') : (item.ProductionYear||'')}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-
-                let libHtml = `
-                    <div class="long-dashboard-title">Media Libraries</div>
-                    <div class="long-lib-grid">
-                        ${libraries.map(lib => `
-                            <div class="long-lib-item" onclick="longPlayer.openLibrary('${esc(lib.Id)}')">
-                                <i data-lucide="${lib.CollectionType === 'movies' ? 'film' : lib.CollectionType === 'tvshows' ? 'tv' : lib.CollectionType === 'music' ? 'music' : 'folder'}" class="w-8 h-8 mb-1 text-primary"></i>
-                                <span>${esc(lib.Name)}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-
-                let latestHtml = '';
-                if (latestItems.length > 0) {
-                    latestHtml = `
-                        <div class="long-dashboard-title">Recently Added</div>
-                        <div class="long-lib-grid" style="grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));">
-                            ${latestItems.map(item => `
-                                <div class="flex flex-col cursor-pointer active:scale-95 transition-transform" onclick="longPlayer.openItem('${esc(item.Id)}')">
-                                    <div class="w-full aspect-[2/3] rounded-lg bg-gray-800 overflow-hidden mb-1">
-                                        <img src="${esc(this.app.getImageSrc(item))}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>'">
-                                    </div>
-                                    <div class="text-white text-xs truncate">${esc(item.Name)}</div>
-                                    <div class="text-gray-500 text-[10px] truncate">${item.Type === 'Episode' ? 'S'+(item.ParentIndexNumber||'?')+'E'+(item.IndexNumber||'?') : (item.ProductionYear||'')}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-
-                this.dom.longBrowse.innerHTML = `
-                    <div class="flex-1 overflow-y-auto overscroll-contain pb-4">
-                        <div class="flex items-center px-4 pt-4 pb-2">
-                            <span class="text-white text-xl font-bold tracking-tight">EmbyX</span>
-                            <span class="ml-2 px-2 py-0.5 bg-primary/20 text-primary text-[10px] font-bold rounded-full border border-primary/30">Long Mode</span>
-                        </div>
-                        ${resumeHtml}
-                        ${libHtml}
-                        ${latestHtml}
-                    </div>
-                `;
-                lucide.createIcons({ root: this.dom.longBrowse });
-            }
-
-            // ─── Library Browser ───
-
-            async openLibrary(libId) {
-                this.state.mode = 'library';
-                this.state.currentLibraryId = libId;
-                this.dom.longBrowse.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>`;
-                lucide.createIcons({ root: this.dom.longBrowse });
-
-                try {
-                    const { server, token, userId } = this.app.config;
-                    const url = server + '/emby/Users/' + userId + '/Items?ParentId=' + libId + '&api_key=' + token + '&Fields=PrimaryImageAspectRatio,UserData,BasicSyncInfo,Overview';                    const res = await fetch(url);
-                    const data = await res.json();
-                    const items = data.Items || [];
-
-                    this.dom.longBrowse.innerHTML = `
-                        <div class="long-browse-header">
-                            <button class="back" onclick="longPlayer.renderDashboard()"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
-                            <span class="title">Library</span>
-                        </div>
-                        <div class="flex-1 overflow-y-auto overscroll-contain">
-                            <div class="long-lib-grid" style="grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));">
-                                ${items.map(item => `
-                                    <div class="flex flex-col cursor-pointer active:scale-95 transition-transform" onclick="longPlayer.openItem('${item.Id}')">
-                                        <div class="w-full aspect-[2/3] rounded-lg bg-gray-800 overflow-hidden mb-1 relative">
-                                            <img src="${this.app.getImageSrc(item)}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>'">
-                                            ${(item.UserData&&item.UserData.PlayedPercentage) ? `<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-white/30"><div class="h-full bg-primary" style="width:${Math.round(item.UserData.PlayedPercentage)}%"></div></div>` : ''}
-                                        </div>
-                                        <div class="text-white text-xs truncate">${this.app.escapeHtml(item.Name||'')}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                    lucide.createIcons({ root: this.dom.longBrowse });
-                } catch (e) {
-                    this.dom.longBrowse.innerHTML = `<div class="flex items-center justify-center h-full text-red-400">Failed to load library</div>`;
-                }
-            }
-
-            // ─── Item Router ───
-
-            async openItem(itemId) {
-                try {
-                    const { server, token, userId } = this.app.config;
-                    const res = await fetch(server + '/emby/Users/' + userId + '/Items/' + itemId + '?api_key=' + token);
-                    const item = await res.json();
-
-                    if (item.Type === 'Series' || item.Type === 'BoxSet') {
-                        this.renderSeries(item);
-                    } else if (item.Type === 'Season' || item.Type === 'Episode') {
-                        const parentRes = await fetch(server + '/emby/Users/' + userId + '/Items/' + item.SeriesId + '?api_key=' + token);
-                        const parentSeries = await parentRes.json();
-                        this.state.currentSeries = parentSeries;
-                        this.openPlayer(item);
-                    } else {
-                        this.openPlayer(item);
-                    }
-                } catch (e) {
-                    this.showToast('Failed to load item');
-                }
-            }
-
-            // ─── Series Browser ───
-
-            async renderSeries(series) {
-                this.state.mode = 'series';
-                this.state.currentSeries = series;
-                const { server, token, userId } = this.app.config;
-                const esc = (s) => this.app.escapeHtml(s || '');
-
-                this.dom.longBrowse.innerHTML = `<div class="flex items-center justify-center h-full text-gray-500"><i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i></div>`;
-                lucide.createIcons({ root: this.dom.longBrowse });
-
-                try {
-                    // Fetch seasons
-                    const seasonsRes = await fetch(server + '/emby/Shows/' + series.Id + '/Seasons?userId=' + userId + '&api_key=' + token);
-                    const seasonsData = await seasonsRes.json();
-                    const seasons = seasonsData.Items || [];
-
-                    // Build season tabs and initial episodes
-                    let seasonTabsHtml = seasons.map((s, i) =>
-                        `<div class="long-season-tab ${i === 0 ? 'active' : ''}" data-season="${s.Id}" onclick="longPlayer.loadSeason('${series.Id}','${s.Id}',this)">${esc(s.Name)}</div>`
-                    ).join('');
-
-                    this.dom.longBrowse.innerHTML = `
-                        <div class="long-browse-header">
-                            <button class="back" onclick="longPlayer.renderDashboard()"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
-                            <span class="title truncate">${esc(series.Name)}</span>
-                        </div>
-                        <div class="flex-shrink-0 px-4 pt-2 pb-1 flex space-x-3">
-                            <div class="w-20 h-28 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0">
-                                <img src="${this.app.getImageSrc(series)}" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>'">
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="text-white font-bold text-sm">${esc(series.Name)}</div>
-                                <div class="text-gray-400 text-xs mt-1">${series.ProductionYear||''} ${series.OfficialRating ? '· '+esc(series.OfficialRating) : ''}</div>
-                                <div class="text-gray-500 text-[11px] mt-1 line-clamp-3">${esc(series.Overview||'')}</div>
-                            </div>
-                        </div>
-                        <div class="long-season-tabs">${seasonTabsHtml}</div>
-                        <div id="longEpisodeList" class="long-episode-list"></div>
-                    `;
-                    lucide.createIcons({ root: this.dom.longBrowse });
-
-                    // Load first season episodes
-                    if (seasons.length > 0) {
-                        this.loadSeason(series.Id, seasons[0].Id, null);
-                    }
-                } catch (e) {
-                    this.dom.longBrowse.innerHTML = `<div class="flex items-center justify-center h-full text-red-400">Failed to load series</div>`;
-                }
-            }
-
-            async loadSeason(seriesId, seasonId, tabEl) {
-                if (tabEl) {
-                    document.querySelectorAll('.long-season-tab').forEach(t => t.classList.remove('active'));
-                    tabEl.classList.add('active');
-                }
-                const { server, token, userId } = this.app.config;
-                const esc = (s) => this.app.escapeHtml(s || '');
-
-                try {
-                    const res = await fetch(server + '/emby/Shows/' + seriesId + '/Episodes?seasonId=' + seasonId + '&userId=' + userId + '&api_key=' + token + '&Fields=Overview,UserData,MediaSources');
-                    const data = await res.json();
-                    const episodes = data.Items || [];
-
-                    const list = document.getElementById('longEpisodeList');
-                    if (!list) return;
-
-                    list.innerHTML = episodes.map(ep => {
-                        const pct = (ep.UserData||{}).PlayedPercentage || 0;
-                        const isWatched = pct >= 100;
-                        const duration = ep.RunTimeTicks ? Math.round(ep.RunTimeTicks / 10000000 / 60) + ' min' : '';
-                        return `
-                            <div class="long-episode-item ${isWatched ? 'opacity-60' : ''}" onclick="longPlayer.openPlayer('${ep.Id}')">
-                                <div class="long-episode-num">${ep.IndexNumber ? 'E'+ep.IndexNumber : '?'}</div>
-                                <div class="long-episode-info">
-                                    <div class="long-episode-title">${esc(ep.Name)}</div>
-                                    <div class="long-episode-meta">${duration}${pct > 0 && pct < 100 ? ' · '+Math.round(pct)+'%' : isWatched ? ' · Watched' : ''}</div>
-                                </div>
-                                <div class="long-episode-action">
-                                    ${pct > 0 && pct < 100 ? '<span class="text-xs text-primary font-bold">▶ Resume</span>' : isWatched ? '<i data-lucide="check" class="w-4 h-4 text-primary"></i>' : '<i data-lucide="play" class="w-4 h-4 text-gray-400"></i>'}
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
-                    lucide.createIcons({ root: list });
-                } catch (e) {
-                    const list = document.getElementById('longEpisodeList');
-                    if (list) list.innerHTML = '<div class="text-gray-500 text-sm text-center py-8">Failed to load episodes</div>';
-                }
-            }
-
-            // ─── Player ───
-
-            async openPlayer(itemOrId) {
-                let item = itemOrId;
-                if (typeof item === 'string') {
-                    const { server, token, userId } = this.app.config;
-                    const res = await fetch(server + '/emby/Users/' + userId + '/Items/' + item + '?api_key=' + token + '&Fields=MediaSources,Chapters,Overview,UserData');
-                    item = await res.json();
-                }
-
-                this.state.currentEpisode = item;
-                this.state.isPlaying = false;
-                this.state.chapters = item.Chapters || [];
-
-                // Show player layer
-                this.dom.longPlayer.classList.remove('hidden');
-                this.dom.longTopBar.classList.add('visible');
-                this.dom.longBottomBar.classList.add('visible');
-                this.dom.longUpNext.classList.remove('show');
-
-                // Set metadata
-                const isEpisode = item.Type === 'Episode';
-                const titleStr = isEpisode && item.SeriesName ? item.SeriesName + ' - ' + item.Name : item.Name;
-                const subStr = isEpisode ? 'S'+(item.ParentIndexNumber||'?')+'E'+(item.IndexNumber||'?') : (item.ProductionYear ? String(item.ProductionYear) : '');
-                this.dom.longPlayerTitle.textContent = titleStr || 'Unknown';
-                this.dom.longPlayerSub.textContent = subStr;
-
-                // Setup video
-                const v = this.dom.longVideo;
-                if (this.dom.longSpinner) this.dom.longSpinner.classList.remove('hidden');
-                // Stop any existing playback
-                if (window.activeHls) { window.activeHls.destroy(); window.activeHls = null; }
-                if (window.activeMpegtsPlayer) { window.activeMpegtsPlayer.destroy(); window.activeMpegtsPlayer = null; }
-                v.pause();
-                v.src = '';
-                v.load();
-
-                // Use app's video source building
-                const playUrl = this.app.getVideoSrc(item.Id, item, true);
-                if (playUrl && !playUrl.startsWith('http')) {
-                    // Direct play from blob/object URL
-                    v.src = playUrl;
-                    v.load();
-                    v.play().then(() => {
-                        this.state.isPlaying = true;
-                        this._updatePlayBtn();
-                    }).catch(() => {});
-                } else if (playUrl) {
-                    // Check for HLS
-                    if (playUrl.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
-                        const hls = new Hls({ maxBufferSize: 0, liveSyncDurationCount: 3 });
-                        hls.loadSource(playUrl);
-                        hls.attachMedia(v);
-                        window.activeHls = hls;
-                        v.addEventListener('canplay', () => {
-                            v.play().then(() => { this.state.isPlaying = true; this._updatePlayBtn(); }).catch(() => {});
-                        }, { once: true });
-                    } else if (playUrl.includes('.m3u8')) {
-                        v.src = playUrl;
-                        v.load();
-                        v.play().then(() => { this.state.isPlaying = true; this._updatePlayBtn(); }).catch(() => {});
-                    } else {
-                        v.src = playUrl;
-                        v.load();
-                        v.play().then(() => {
-                            this.state.isPlaying = true;
-                            this._updatePlayBtn();
-                        }).catch(() => {});
-                    }
-                }
-
-                // Bind video events
-                this._bindVideoEvents(v);
-
-                // Try to seek to saved position
-                const userData = item.UserData || {};
-                if (userData.PlaybackPositionTicks && userData.PlaybackPositionTicks > 0) {
-                    const seekSec = userData.PlaybackPositionTicks / 10000000;
-                    if (seekSec > 5) {
-                        v.addEventListener('loadedmetadata', () => {
-                            v.currentTime = seekSec;
-                        }, { once: true });
-                    }
-                }
-
-                // Report playback start
-                this.app.state.playSessionId = 'long_' + item.Id + '_' + Date.now();
-                this.app.reportPlayback('playing', v);
-
-                // Setup progress reporting
-                v.addEventListener('timeupdate', () => {
-                    this.app.reportPlayback('progress', v);
-                });
-
-                // Show OSD with timer
-                this.showOSD();
-            }
-
-            _bindVideoEvents(v) {
-                const spinner = document.getElementById('longSpinner');
-
-                v.addEventListener('timeupdate', () => this._updateSeekBar());
-                v.addEventListener('loadedmetadata', () => {
-                    this.dom.longTotalTime.textContent = this._formatTimeLong(v.duration);
-                    this._renderChapterMarks();
-                    if (spinner) spinner.classList.add('hidden');
-                });
-                v.addEventListener('waiting', () => {
-                    if (spinner) spinner.classList.remove('hidden');
-                });
-                v.addEventListener('canplay', () => {
-                    if (spinner) spinner.classList.add('hidden');
-                });
-                v.addEventListener('playing', () => {
-                    if (spinner) spinner.classList.add('hidden');
-                });
-                v.addEventListener('error', () => {
-                    if (spinner) spinner.classList.add('hidden');
-                    this.showToast('Playback error. Try a different source.');
-                });
-                v.addEventListener('play', () => { this.state.isPlaying = true; this._updatePlayBtn(); });
-                v.addEventListener('pause', () => { this.state.isPlaying = false; this._updatePlayBtn(); this.showOSD(); });
-                v.addEventListener('ended', () => {
-                    this.state.isPlaying = false;
-                    this._updatePlayBtn();
-                    this.app.reportPlayback('stopped', v);
-                    this._markPlayed(v);
-                    this._showUpNext();
-                });
-            }
-
-            closePlayer() {
-                const v = this.dom.longVideo;
-                v.pause();
-                this.app.reportPlayback('stopped', v);
-                if (window.activeHls) { window.activeHls.destroy(); window.activeHls = null; }
-                if (window.activeMpegtsPlayer) { window.activeMpegtsPlayer.destroy(); window.activeMpegtsPlayer = null; }
-                v.src = '';
-                v.load();
-                this.dom.longPlayer.classList.add('hidden');
-                this.dom.longUpNext.classList.remove('show');
-                if (this.state.upNextTimer) { clearTimeout(this.state.upNextTimer); this.state.upNextTimer = null; }
-                if (this.state.osdTimer) { clearTimeout(this.state.osdTimer); this.state.osdTimer = null; }
-            }
-
-            // ─── OSD ───
-
-            showOSD() {
-                this.dom.longTopBar.classList.add('visible');
-                this.dom.longBottomBar.classList.add('visible');
-                if (this.state.osdTimer) clearTimeout(this.state.osdTimer);
-                if (this.state.isPlaying) {
-                    this.state.osdTimer = setTimeout(() => this.hideOSD(), 3000);
-                }
-            }
-
-            hideOSD() {
-                if (this.state.isPlaying && !this.dom.longPicker.classList.contains('show')) {
-                    this.dom.longTopBar.classList.remove('visible');
-                    this.dom.longBottomBar.classList.remove('visible');
-                }
-            }
-
-            _updateSeekBar() {
-                const v = this.dom.longVideo;
-                if (!v || !v.duration) return;
-                const pct = (v.currentTime / v.duration) * 100;
-                this.dom.longSeekProgress.style.width = Math.min(pct, 100) + '%';
-                this.dom.longCurTime.textContent = this._formatTimeLong(v.currentTime);
-                this.dom.longTotalTime.textContent = this._formatTimeLong(v.duration);
-
-                // Update chapter marks
-                const marks = this.dom.longChapterMarks;
-                const chapters = this.state.chapters;
-                if (marks && chapters.length > 0) {
-                    marks.innerHTML = chapters.map(ch => {
-                        const chSec = ch.StartPositionTicks / 10000000;
-                        const pos = (chSec / v.duration) * 100;
-                        const played = chSec <= v.currentTime ? 'played' : '';
-                        return `<div class="chapter-mark ${played}" style="left:${pos}%"></div>`;
-                    }).join('');
-                }
-            }
-
-            _renderChapterMarks() {
-                this._updateSeekBar();
-            }
-
-            _updatePlayBtn() {
-                const btn = this.dom.longPlayBtn;
-                if (btn) {
-                    btn.innerHTML = `<i data-lucide="${this.state.isPlaying ? 'pause' : 'play'}" class="w-5 h-5"></i>`;
-                    lucide.createIcons({ root: btn });
-                }
-            }
-
-            _formatTimeLong(s) {
-                if (!s || !isFinite(s)) return '00:00';
-                const h = Math.floor(s / 3600);
-                const m = Math.floor((s % 3600) / 60);
-                const sec = Math.floor(s % 60);
-                if (h > 0) {
-                    return h + ':' + m.toString().padStart(2, '0') + ':' + sec.toString().padStart(2, '0');
-                }
-                return m.toString().padStart(2, '0') + ':' + sec.toString().padStart(2, '0');
-            }
-
-            // ─── OSD Event Bindings ───
-
-            _bindOSD() {
-                // Player layer mouse activity
-                const playerLayer = this.dom.longPlayer;
-                if (playerLayer) {
-                    playerLayer.addEventListener('mousemove', () => this.showOSD());
-                    playerLayer.addEventListener('touchstart', () => this.showOSD(), { passive: true });
-                }
-
-                // Play/Pause
-                if (this.dom.longPlayBtn) {
-                    this.dom.longPlayBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this.togglePlay();
-                    };
-                }
-
-                // Click on video to toggle play
-                if (this.dom.longVideo) {
-                    // Touch/click gesture handler: tap center=play, dbl-tap left=rewind, right=forward
-                    let lastTap = 0;
-                    let tapTimeout = null;
-                    const videoTapHandler = (e) => {
-                        const now = Date.now();
-                        const timeSince = now - lastTap;
-                        lastTap = now;
-
-                        if (timeSince < 350 && timeSince > 50) {
-                            // Double tap detected
-                            if (tapTimeout) { clearTimeout(tapTimeout); tapTimeout = null; }
-                            const rect = this.dom.longVideo.getBoundingClientRect();
-                            const x = (e.clientX || (e.changedTouches && e.changedTouches[0].clientX) || 0) - rect.left;
-                            const isLeft = x < rect.width * 0.35;
-                            const isRight = x > rect.width * 0.65;
-                            const v = this.dom.longVideo;
-                            if (v) {
-                                if (isLeft) {
-                                    v.currentTime = Math.max(0, v.currentTime - 15);
-                                    this._showSkipFeedback('rewind', 15);
-                                } else if (isRight) {
-                                    v.currentTime = Math.min(v.duration || 0, v.currentTime + 15);
-                                    this._showSkipFeedback('forward', 15);
-                                } else {
-                                    this.togglePlay();
-                                }
-                            }
-                            this.showOSD();
-                            return;
-                        }
-
-                        // Single tap: wait to see if it's part of a double tap
-                        if (tapTimeout) clearTimeout(tapTimeout);
-                        tapTimeout = setTimeout(() => {
-                            this.togglePlay();
-                            this.showOSD();
-                            tapTimeout = null;
-                        }, 300);
-                    };
-                    this.dom.longVideo.addEventListener('click', videoTapHandler);
-                    this.dom.longVideo.addEventListener('touchend', (e) => {
-                        // Prevent click from firing again on touch devices
-                        e.preventDefault();
-                        videoTapHandler(e);
-                    }, { passive: false });
-                }
-
-                // Back button
-                if (this.dom.longBackBtn) {
-                    this.dom.longBackBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this.closePlayer();
-                    };
-                }
-
-                // Seek bar
-                if (this.dom.longSeek) {
-                    this.dom.longSeek.onclick = (e) => {
-                        e.stopPropagation();
-                        const v = this.dom.longVideo;
-                        if (!v || !v.duration) return;
-                        const rect = this.dom.longSeek.getBoundingClientRect();
-                        const ratio = (e.clientX - rect.left) / rect.width;
-                        v.currentTime = ratio * v.duration;
-                        this.showOSD();
-                    };
-                }
-
-                // Rewind/Forward
-                if (this.dom.longRewindBtn) {
-                    this.dom.longRewindBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        const v = this.dom.longVideo;
-                        if (v) v.currentTime = Math.max(0, v.currentTime - 10);
-                        this.showOSD();
-                    };
-                }
-                if (this.dom.longForwardBtn) {
-                    this.dom.longForwardBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        const v = this.dom.longVideo;
-                        if (v) v.currentTime = Math.min(v.duration || 0, v.currentTime + 10);
-                        this.showOSD();
-                    };
-                }
-
-                // Chapter navigation
-                if (this.dom.longPrevChapterBtn) {
-                    this.dom.longPrevChapterBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._skipChapter(-1);
-                    };
-                }
-                if (this.dom.longNextChapterBtn) {
-                    this.dom.longNextChapterBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._skipChapter(1);
-                    };
-                }
-
-                // Speed
-                if (this.dom.longSpeedBtn) {
-                    this.dom.longSpeedBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._cycleSpeed();
-                    };
-                }
-
-                // Volume
-                if (this.dom.longVolumeBtn) {
-                    this.dom.longVolumeBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._toggleMute();
-                    };
-                }
-
-                // Fullscreen
-                if (this.dom.longFsBtn) {
-                    this.dom.longFsBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._toggleFullscreen();
-                    };
-                }
-
-                // Subtitle button
-                if (this.dom.longSubBtn) {
-                    this.dom.longSubBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._showSubtitlePicker();
-                    };
-                }
-
-                // Audio button
-                if (this.dom.longAudioBtn) {
-                    this.dom.longAudioBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._showAudioPicker();
-                    };
-                }
-
-                // Settings button
-                if (this.dom.longSettingsBtn) {
-                    this.dom.longSettingsBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._showSettings();
-                    };
-                }
-
-                // Up Next buttons
-                if (this.dom.longNextCancelBtn) {
-                    this.dom.longNextCancelBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._cancelUpNext();
-                    };
-                }
-                if (this.dom.longNextCloseBtn) {
-                    this.dom.longNextCloseBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._cancelUpNext();
-                    };
-                }
-                if (this.dom.longNextPlayBtn) {
-                    this.dom.longNextPlayBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        this._playNowUpNext();
-                    };
-                }
-
-                // Keyboard shortcuts
-                document.addEventListener('keydown', (e) => {
-                    if (!this.dom.longPlayer || this.dom.longPlayer.classList.contains('hidden')) return;
-                    if (this.app.isAnyModalOpen && this.app.isAnyModalOpen()) return;
-                    switch (e.key) {
-                        case ' ':
-                        case 'k':
-                            e.preventDefault();
-                            this.togglePlay();
-                            break;
-                        case 'ArrowLeft':
-                            e.preventDefault();
-                            const v = this.dom.longVideo;
-                            if (v) v.currentTime = Math.max(0, v.currentTime - 10);
-                            this.showOSD();
-                            break;
-                        case 'ArrowRight':
-                            e.preventDefault();
-                            const v2 = this.dom.longVideo;
-                            if (v2) v2.currentTime = Math.min(v2.duration || 0, v2.currentTime + 10);
-                            this.showOSD();
-                            break;
-                        case 'ArrowUp':
-                            e.preventDefault();
-                            this._adjustVolume(0.1);
-                            break;
-                        case 'ArrowDown':
-                            e.preventDefault();
-                            this._adjustVolume(-0.1);
-                            break;
-                        case 'f':
-                            e.preventDefault();
-                            this._toggleFullscreen();
-                            break;
-                        case 'm':
-                            e.preventDefault();
-                            this._toggleMute();
-                            break;
-                        case 'Escape':
-                            e.preventDefault();
-                            if (this.dom.longPicker.classList.contains('show')) {
-                                this.hidePicker();
-                            } else {
-                                this.closePlayer();
-                            }
-                            break;
-                    }
-                });
-            }
-
-            // ─── Playback Controls ───
-
-            togglePlay() {
-                const v = this.dom.longVideo;
-                if (!v) return;
-                if (v.paused) {
-                    v.play().then(() => {
-                        this.state.isPlaying = true;
-                        this._updatePlayBtn();
-                        this.hideOSD();
-                    }).catch(() => {});
-                } else {
-                    v.pause();
-                    this.state.isPlaying = false;
-                    this._updatePlayBtn();
-                    this.showOSD();
-                }
-            }
-
-            _skipChapter(dir) {
-                const v = this.dom.longVideo;
-                const chapters = this.state.chapters;
-                if (!v || !v.duration || chapters.length === 0) {
-                    // No chapters, do 30s skip instead
-                    if (v) v.currentTime = Math.max(0, Math.min(v.duration || 0, v.currentTime + dir * 30));
-                    return;
-                }
-                const curTime = v.currentTime;
-                let idx = -1;
-                for (let i = 0; i < chapters.length; i++) {
-                    const chSec = chapters[i].StartPositionTicks / 10000000;
-                    if (chSec <= curTime + 1) idx = i;
-                }
-                const nextIdx = Math.max(0, Math.min(chapters.length - 1, idx + dir));
-                if (nextIdx !== idx) {
-                    v.currentTime = chapters[nextIdx].StartPositionTicks / 10000000;
-                }
-                this.showOSD();
-            }
-
-            _cycleSpeed() {
-                const speeds = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0];
-                const v = this.dom.longVideo;
-                if (!v) return;
-                let idx = speeds.indexOf(this.state.playbackRate);
-                idx = (idx + 1) % speeds.length;
-                this.state.playbackRate = speeds[idx];
-                v.playbackRate = speeds[idx];
-                if (this.dom.longSpeedBtn) {
-                    this.dom.longSpeedBtn.textContent = speeds[idx].toFixed(1) + 'x';
-                }
-                this.showOSD();
-            }
-
-            _toggleMute() {
-                const v = this.dom.longVideo;
-                if (!v) return;
-                v.muted = !v.muted;
-                const btn = this.dom.longVolumeBtn;
-                if (btn) {
-                    btn.innerHTML = `<i data-lucide="${v.muted ? 'volume-x' : 'volume-2'}" class="w-5 h-5"></i>`;
-                    lucide.createIcons({ root: btn });
-                }
-                this.showOSD();
-            }
-
-            _adjustVolume(delta) {
-                const v = this.dom.longVideo;
-                if (!v) return;
-                v.volume = Math.max(0, Math.min(1, v.volume + delta));
-                if (v.volume > 0 && v.muted) {
-                    v.muted = false;
-                    const btn = this.dom.longVolumeBtn;
-                    if (btn) {
-                        btn.innerHTML = '<i data-lucide="volume-2" class="w-5 h-5"></i>';
-                        lucide.createIcons({ root: btn });
-                    }
-                }
-                this.showOSD();
-            }
-
-            _toggleFullscreen() {
-                if (document.fullscreenElement) {
-                    document.exitFullscreen().catch(() => {});
-                } else {
-                    document.getElementById('longContainer').requestFullscreen().catch(() => {});
-                }
-            }
-
-            // ─── Up Next ───
-
-            async _showUpNext() {
-                const item = this.state.currentEpisode;
-                if (!item || item.Type !== 'Episode' || !item.SeriesId) return;
-
-                try {
-                    const { server, token, userId } = this.app.config;
-                    const res = await fetch(server + '/emby/Shows/' + item.SeriesId + '/Episodes?seasonId=' + item.SeasonId + '&userId=' + userId + '&api_key=' + token + '&limit=3&Fields=Overview,UserData');
-                    const data = await res.json();
-                    const eps = data.Items || [];
-                    const curIdx = eps.findIndex(e => e.Id === item.Id);
-                    const nextEp = eps[curIdx + 1];
-                    if (!nextEp) return;
-
-                    this.dom.longNextTitle.textContent = nextEp.Name || 'Episode ' + (nextEp.IndexNumber || '?');
-                    this.dom.longNextMeta.textContent = 'S' + (nextEp.ParentIndexNumber || item.ParentIndexNumber || '?') + 'E' + (nextEp.IndexNumber || '?');
-                    const imgSrc = this.app.getImageSrc(nextEp);
-                    if (imgSrc) this.dom.longNextPoster.src = imgSrc;
-                    this.state._upNextItem = nextEp;
-
-                    this.dom.longUpNext.classList.add('show');
-                    let countdown = 15;
-                    this.state.upNextTimer = setInterval(() => {
-                        countdown--;
-                        if (this.dom.longNextCountdown) {
-                            this.dom.longNextCountdown.textContent = 'Playing in ' + countdown + 's';
-                        }
-                        if (countdown <= 0) {
-                            this._playNowUpNext();
-                        }
-                    }, 1000);
-                } catch (e) { /* ignore */ }
-            }
-
-            _cancelUpNext() {
-                if (this.state.upNextTimer) {
-                    clearInterval(this.state.upNextTimer);
-                    this.state.upNextTimer = null;
-                }
-                this.dom.longUpNext.classList.remove('show');
-            }
-
-            _playNowUpNext() {
-                if (this.state.upNextTimer) {
-                    clearInterval(this.state.upNextTimer);
-                    this.state.upNextTimer = null;
-                }
-                this.dom.longUpNext.classList.remove('show');
-                if (this.state._upNextItem) {
-                    this.openPlayer(this.state._upNextItem);
-                }
-            }
-
-            // ─── Mark Played ───
-
-            async _markPlayed(v) {
-                const item = this.state.currentEpisode;
-                if (!item || !item.Id) return;
-                const { server, token, userId } = this.app.config;
-                // Only mark if watched > 90%
-                if (v.duration && v.currentTime / v.duration > 0.9) {
-                    try {
-                        await fetch(server + '/emby/Users/' + userId + '/PlayedItems/' + item.Id + '?api_key=' + token, { method: 'POST' });
-                    } catch (e) { /* ignore */ }
-                }
-            }
-
-            // ─── Picker (subtitle/audio) ───
-
-            showPicker(title, items, activeId, callback) {
-                const panel = this.dom.longPickerPanel;
-                panel.innerHTML = `
-                    <div class="text-white font-bold text-sm mb-3">${title}</div>
-                    ${items.map(item => `
-                        <div class="long-picker-item ${(item.Id || item.Index || '') === (activeId || '') ? 'active' : ''}"
-                             onclick="longPlayer._pickerSelect('${(item.Id || item.Index || '')}')">
-                            ${item.DisplayTitle || item.Language || 'Unknown'}
-                        </div>
-                    `).join('')}
-                    <div class="mt-3 pt-3 border-t border-gray-700/30">
-                        <button class="w-full py-2 text-sm text-gray-400 hover:text-white" onclick="longPlayer.hidePicker()">Close</button>
-                    </div>
-                `;
-                this.dom.longPicker.classList.add('show');
-                this._pickerCallback = callback;
-                lucide.createIcons({ root: panel });
-            }
-
-            _showSettings() {
-                const speeds = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0];
-                const currentSpeed = this.state.playbackRate;
-                const isStatic = this.app.config.useStatic;
-
-                const items = [
-                    { id: 'speed', label: 'Playback Speed', value: currentSpeed.toFixed(1) + 'x', sub: '' },
-                    { id: 'direct', label: 'Direct Play', value: isStatic ? 'ON' : 'OFF', sub: isStatic ? 'No transcoding' : 'Transcoding allowed' },
-                ];
-
-                const panel = this.dom.longPickerPanel;
-                panel.innerHTML = '<div class="text-white font-bold text-sm mb-3">Settings</div>' +
-                    items.map(item => '<div class="long-picker-item flex items-center justify-between" onclick="longPlayer._settingsAction(\'' + item.id + '\')">' +
-                        '<div><div class="text-white text-sm">' + item.label + '</div>' +
-                        (item.sub ? '<div class="text-gray-500 text-xs">' + item.sub + '</div>' : '') + '</div>' +
-                        '<span class="text-primary text-sm font-bold">' + item.value + '</span></div>').join('') +
-                    '<div class="mt-3 pt-3 border-t border-gray-700/30">' +
-                    '<button class="w-full py-2 text-sm text-gray-400 hover:text-white" onclick="longPlayer.hidePicker()">Close</button></div>';
-                this.dom.longPicker.classList.add('show');
-                lucide.createIcons({ root: panel });
-            }
-
-            _settingsAction(action) {
-                if (action === 'speed') {
-                    this._cycleSpeed();
-                    this._showSettings(); // Refresh
-                } else if (action === 'direct') {
-                    this.app.config.useStatic = !this.app.config.useStatic;
-                    localStorage.setItem('emby_static', this.app.config.useStatic);
-                    this.showToast('Direct Play: ' + (this.app.config.useStatic ? 'ON' : 'OFF'));
-                    this._showSettings(); // Refresh
-                }
-            }
-
-            hidePicker() {
-                this.dom.longPicker.classList.remove('show');
-                this._pickerCallback = null;
-                this.showOSD();
-            }
-
-            _pickerSelect(value) {
-                if (this._pickerCallback) this._pickerCallback(value);
-                this.hidePicker();
-            }
-
-            // ─── Toast ───
-
-            _showSkipFeedback(direction, seconds) {
-                const bubble = document.createElement('div');
-                bubble.className = 'absolute pointer-events-none z-[95] flex items-center justify-center';
-                bubble.style.cssText = 'top:50%;transform:translateY(-50%) scale(0.8);opacity:0;transition:all 0.3s ease-out;';
-                bubble.style[direction === 'rewind' ? 'left' : 'right'] = '30px';
-                bubble.innerHTML = '<div class="flex flex-col items-center justify-center bg-black/50 backdrop-blur-md text-white rounded-full w-20 h-20 shadow-2xl space-y-1">' +
-                    '<i data-lucide="' + (direction === 'rewind' ? 'chevrons-left' : 'chevrons-right') + '" class="w-6 h-6"></i>' +
-                    '<span class="text-xs font-bold">' + seconds + 's</span></div>';
-                this.dom.longPlayer.appendChild(bubble);
-                lucide.createIcons({ root: bubble });
-                requestAnimationFrame(() => {
-                    bubble.style.transform = 'translateY(-50%) scale(1)';
-                    bubble.style.opacity = '1';
-                    setTimeout(() => {
-                        bubble.style.transform = 'translateY(-50%) scale(0.8)';
-                        bubble.style.opacity = '0';
-                        setTimeout(() => bubble.remove(), 300);
-                    }, 400);
-                });
-            }
-
-            showToast(msg, duration) {
-                this.app.showToast(msg, duration);
-            }
-
-            getImageSrc(item) {
-                return this.app.getImageSrc(item);
-            }
-
-            // ─── Subtitle & Audio ───
-
-            async _fetchMediaStreams() {
-                const item = this.state.currentEpisode;
-                if (!item || !item.Id) return { subtitles: [], audios: [] };
-                // Use already-fetched MediaSources if available
-                const sources = item.MediaSources || [];
-                if (sources.length === 0) {
-                    try {
-                        const { server, token } = this.app.config;
-                        const res = await fetch(server + '/emby/Items/' + item.Id + '/PlaybackInfo?api_key=' + token + '&UserId=' + this.app.config.userId);
-                        const data = await res.json();
-                        const ms = data.MediaSources || [];
-                        if (ms.length > 0) {
-                            this.state.currentEpisode.MediaSources = ms;
-                            const streams = ms[0].MediaStreams || [];
-                            return {
-                                subtitles: streams.filter(s => s.Type === 'Subtitle'),
-                                audios: streams.filter(s => s.Type === 'Audio')
-                            };
-                        }
-                    } catch(e) {}
-                    return { subtitles: [], audios: [] };
-                }
-                const streams = sources[0].MediaStreams || [];
-                return {
-                    subtitles: streams.filter(s => s.Type === 'Subtitle'),
-                    audios: streams.filter(s => s.Type === 'Audio')
-                };
-            }
-
-            async _showSubtitlePicker() {
-                const { subtitles } = await this._fetchMediaStreams();
-                const item = this.state.currentEpisode;
-                const curIdx = (item && item.MediaSources && item.MediaSources[0]) ? (item.MediaSources[0].DefaultSubtitleStreamIndex != null ? item.MediaSources[0].DefaultSubtitleStreamIndex : -1) : -1;
-
-                const items = [{ Index: -1, DisplayTitle: 'None' }, ...subtitles];
-                this.showPicker('Subtitles', items, String(curIdx), (val) => {
-                    this._setSubtitleStream(parseInt(val));
-                });
-            }
-
-            async _showAudioPicker() {
-                const { audios } = await this._fetchMediaStreams();
-                const item = this.state.currentEpisode;
-                const curIdx = (item && item.MediaSources && item.MediaSources[0]) ? (item.MediaSources[0].DefaultAudioStreamIndex != null ? item.MediaSources[0].DefaultAudioStreamIndex : -1) : -1;
-
-                const items = audios.map(a => ({
-                    Index: a.Index,
-                    DisplayTitle: (a.Language || 'Unknown') + (a.Codec ? ' (' + a.Codec + (a.ChannelLayout ? ' ' + a.ChannelLayout : '') + ')' : '')
-                }));
-                this.showPicker('Audio Track', items, String(curIdx), (val) => {
-                    this._setAudioStream(parseInt(val));
-                });
-            }
-
-            _setSubtitleStream(index) {
-                const v = this.dom.longVideo;
-                if (!v) return;
-
-                // Try HLS.js subtitle API first (most reliable for HLS streams)
-                if (window.activeHls && typeof window.activeHls.subtitleTrack !== 'undefined') {
-                    window.activeHls.subtitleTrack = index < 0 ? -1 : index;
-                    this.showToast(index < 0 ? 'Subtitles off' : 'Subtitle track ' + (index + 1));
-                    return;
-                }
-
-                // Fallback to HTML5 textTracks API
-                for (let i = 0; i < (v.textTracks || []).length; i++) {
-                    v.textTracks[i].mode = (i === index) ? 'showing' : 'hidden';
-                }
-                this.showToast(index < 0 ? 'Subtitles off' : 'Subtitle track ' + (index + 1));
-            }
-
-            _setAudioStream(index) {
-                const v = this.dom.longVideo;
-                if (!v || index < 0) return;
-
-                // Try HLS.js audio track API first
-                if (window.activeHls && typeof window.activeHls.audioTrack !== 'undefined') {
-                    window.activeHls.audioTrack = index;
-                    this.showToast('Audio track switched');
-                    return;
-                }
-
-                // Fallback to native HTML5 audioTracks API (limited browser support)
-                if (v.audioTracks && v.audioTracks.length > 0) {
-                    for (let i = 0; i < v.audioTracks.length; i++) {
-                        v.audioTracks[i].enabled = (i === index);
-                    }
-                }
-                this.showToast('Audio track switched');
-            }
+            _lib(id){const br=document.getElementById('lmBr');br.innerHTML='<div style="display:flex;align-items:center;padding:8px 12px;gap:8px;border-bottom:1px solid rgba(255,255,255,.05)"><button onclick="longPlayer._dash()" style="background:0;border:0;color:#888;cursor:pointer;padding:4px"><i data-lucide="chevron-left" style="width:20px;height:20px"></i></button><span style="color:#fff;font-weight:700;font-size:16px">Library</span></div><div style="flex:1;overflow-y:auto"><div class="lm-gr" style="padding-top:12px"></div></div>';lucide.createIcons({root:br});const{server,token,userId}=this.app.config;fetch(server+'/emby/Users/'+userId+'/Items?ParentId='+id+'&api_key='+token+'&Fields=PrimaryImageAspectRatio,UserData,Overview').then(r=>r.json()).then(d=>{const items=d.Items||[];const grid=br.querySelector('.lm-gr');if(!grid)return;grid.innerHTML=items.map(i=>'<div class="lm-it" onclick="longPlayer.'+(i.Type==='Series'?'_series(\''+i.Id+'\')':'_play(\''+i.Id+'\')')+'"><img src="'+this.app.getImageSrc(i)+'" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 150%22><rect fill=%22%23333%22 width=%22100%22 height=%22150%22/></svg>\'"><div class="n">'+this.app.escapeHtml(i.Name||'')+'</div></div>').join('');}).catch(()=>{});}
+            _series(id){const br=document.getElementById('lmBr');br.innerHTML='<div style="display:flex;align-items:center;padding:8px 12px;gap:8px;border-bottom:1px solid rgba(255,255,255,.05)"><button onclick="longPlayer._dash()" style="background:0;border:0;color:#888;cursor:pointer;padding:4px"><i data-lucide="chevron-left" style="width:20px;height:20px"></i></button><span style="color:#fff;font-weight:700;font-size:16px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="lmSn">...</span></div><div id="lmSb" style="flex:1;overflow-y:auto"></div>';lucide.createIcons({root:br});const{server,token,userId}=this.app.config;Promise.all([fetch(server+'/emby/Users/'+userId+'/Items/'+id+'?api_key='+token).then(r=>r.json()),fetch(server+'/emby/Shows/'+id+'/Seasons?userId='+userId+'&api_key='+token).then(r=>r.json()).then(d=>d.Items||[])]).then(([series,seasons])=>{document.getElementById('lmSn').textContent=series.Name;let h='<div class="lm-s">';seasons.forEach((s,i)=>{h+='<button class="'+(i===0?'a':'')+'" onclick="longPlayer._eps(\''+id+'\',\''+s.Id+'\',this)">'+this.app.escapeHtml(s.Name)+'</button>';});h+='</div><div id="lmEp"></div>';document.getElementById('lmSb').innerHTML=h;if(seasons.length)this._eps(id,seasons[0].Id);}).catch(()=>{});}
+            _eps(sid,seid,btn){if(btn){document.querySelectorAll('.lm-s button').forEach(b=>b.classList.remove('a'));btn.classList.add('a');}const{server,token,userId}=this.app.config;fetch(server+'/emby/Shows/'+sid+'/Episodes?seasonId='+seid+'&userId='+userId+'&api_key='+token+'&Fields=Overview,UserData').then(r=>r.json()).then(d=>{const eps=d.Items||[];const el=document.getElementById('lmEp');if(!el)return;el.innerHTML=eps.map((e,i)=>{const p=(e.UserData||{}).PlayedPercentage||0;const w=p>=100;const dur=e.RunTimeTicks?Math.round(e.RunTimeTicks/1e7/60)+'min':'';return '<div class="lm-e" onclick="longPlayer._play(\''+e.Id+'\')" style="'+(w?'opacity:.5':'')+'"><div class="e1">'+(e.IndexNumber||(i+1))+'</div><div class="e2"><div class="e3">'+this.app.escapeHtml(e.Name)+'</div><div class="e4">'+dur+(p>0&&p<100?' - '+Math.round(p)+'%':w?' - Watched':'')+'</div></div></div>';}).join('');if(!eps.length)el.innerHTML='<div style="text-align:center;padding:40px;color:#666">No episodes</div>';}).catch(()=>{});}
+            _play(id){document.getElementById('lmLd').classList.add('on');const{server,token,userId}=this.app.config;fetch(server+'/emby/Users/'+userId+'/Items/'+id+'?api_key='+token+'&Fields=MediaSources,Chapters,Overview,UserData').then(r=>r.json()).then(item=>{document.getElementById('lmLd').classList.remove('on');const br=document.getElementById('lmBr');br.style.display='none';let el=document.getElementById('lmPl');if(!el){el=document.createElement('div');el.id='lmPl';el.style.cssText='position:absolute;inset:0;z-index:1005;background:#000';document.getElementById('lmO').appendChild(el);}el.style.display='block';const isEp=item.Type==='Episode';const t=isEp&&item.SeriesName?item.SeriesName+' - '+item.Name:item.Name;const sub=isEp?'S'+(item.ParentIndexNumber||'?')+'E'+(item.IndexNumber||'?'):(item.ProductionYear||'');el.innerHTML='<video id="lmV" style="width:100%;height:100%;object-fit:contain" playsinline webkit-playsinline></video><div class="lm-t show" id="lmT"><button onclick="longPlayer._cp()" style="background:0;border:0;color:#fff;width:36px;height:36px"><i data-lucide="chevron-left" style="width:22px;height:22px"></i></button><div style="flex:1;min-width:0;margin-left:8px"><div style="color:#fff;font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+this.app.escapeHtml(t)+'</div><div style="color:#999;font-size:11px">'+this.app.escapeHtml(sub)+'</div></div></div><div class="lm-b show" id="lmB"><div class="lm-p" id="lmSk"><div class="lm-pb" id="lmPg"></div></div><div class="lm-c"><button onclick="longPlayer._sk(-1)"><i data-lucide="skip-back" style="width:20px;height:20px"></i></button><button onclick="longPlayer._rw()"><i data-lucide="rewind" style="width:18px;height:18px"></i></button><button class="lm-cb" id="lmPb" onclick="longPlayer._tp()"><i data-lucide="pause" style="width:20px;height:20px"></i></button><button onclick="longPlayer._ff()"><i data-lucide="fast-forward" style="width:16px;height:16px"></i></button><button onclick="longPlayer._sk(1)"><i data-lucide="skip-forward" style="width:20px;height:20px"></i></button><span style="color:#fff;font-size:11px;font-family:monospace" id="lmTm">00:00 / 00:00</span></div></div><div class="lm-u" id="lmNu"></div>';lucide.createIcons({root:el});const v=document.getElementById('lmV');const pu=this.app.getVideoSrc(item.Id,item,true);if(pu){if(pu.includes('.m3u8')&&typeof Hls!=='undefined'&&Hls.isSupported()){if(window._lH){window._lH.destroy();}const h=new Hls({maxBufferSize:0,liveSyncDurationCount:3});h.loadSource(pu);h.attachMedia(v);window._lH=h;}else{v.src=pu;}v.load();v.play().then(()=>{this.state.isPlaying=true;this._upb();}).catch(()=>{});}
+                v.addEventListener('loadedmetadata',()=>this._ut());v.addEventListener('timeupdate',()=>this._ut());v.addEventListener('play',()=>{this.state.isPlaying=true;this._upb();});v.addEventListener('pause',()=>{this.state.isPlaying=false;this._upb();this._osd();});v.addEventListener('ended',()=>{this.state.isPlaying=false;this._upb();this._nxt();});v.addEventListener('waiting',()=>document.getElementById('lmLd').classList.add('on'));v.addEventListener('canplay',()=>document.getElementById('lmLd').classList.remove('on'));document.getElementById('lmSk').onclick=function(e){if(!v.duration)return;const r=this.getBoundingClientRect();v.currentTime=((e.clientX-r.left)/r.width)*v.duration;};el.onmousemove=()=>this._osd();el.ontouchstart=()=>this._osd();this._osd();v.onclick=()=>this._tp();const ud=item.UserData||{};if(ud.PlaybackPositionTicks>5e7){const rs=ud.PlaybackPositionTicks/1e7;v.addEventListener('loadedmetadata',()=>{v.currentTime=rs;},{once:true});}this.app.state.playSessionId='long_'+item.Id+'_'+Date.now();this.app.reportPlayback('playing',v);v.addEventListener('timeupdate',()=>this.app.reportPlayback('progress',v));}).catch(()=>{document.getElementById('lmLd').classList.remove('on');this.app.showToast('Playback failed');});}
+            _cp(){const v=document.getElementById('lmV');if(v){v.pause();v.src='';v.load();}if(window._lH){window._lH.destroy();window._lH=null;}const el=document.getElementById('lmPl');if(el)el.style.display='none';document.getElementById('lmBr').style.display='';if(this._nt){clearTimeout(this._nt);this._nt=null;}if(this._ot){clearTimeout(this._ot);this._ot=null;}}
+            _tp(){const v=document.getElementById('lmV');if(!v)return;if(v.paused){v.play().then(()=>{this.state.isPlaying=true;this._upb();}).catch(()=>{});}else{v.pause();this.state.isPlaying=false;this._upb();this._osd();}}
+            _rw(){const v=document.getElementById('lmV');if(v)v.currentTime=Math.max(0,v.currentTime-10);this._osd();}
+            _ff(){const v=document.getElementById('lmV');if(v)v.currentTime=Math.min(v.duration||0,v.currentTime+10);this._osd();}
+            _sk(d){const v=document.getElementById('lmV');if(!v||!v.duration)return;v.currentTime=Math.max(0,Math.min(v.duration||0,v.currentTime+d*30));this._osd();}
+            _upb(){const b=document.getElementById('lmPb');if(b){b.innerHTML='<i data-lucide="'+(this.state.isPlaying?'pause':'play')+'" style="width:20px;height:20px"></i>';lucide.createIcons({root:b});}}
+            _ut(){const v=document.getElementById('lmV');if(!v||!v.duration)return;const p=v.currentTime/v.duration*100;const bar=document.getElementById('lmPg');if(bar)bar.style.width=Math.min(p,100)+'%';const t=document.getElementById('lmTm');if(t)t.textContent=this._fm(v.currentTime)+' / '+this._fm(v.duration);}
+            _fm(s){if(!s||!isFinite(s))return'00:00';const h=Math.floor(s/3600);const m=Math.floor((s%3600)/60);const c=Math.floor(s%60);return h>0?h+':'+String(m).padStart(2,'0')+':'+String(c).padStart(2,'0'):String(m).padStart(2,'0')+':'+String(c).padStart(2,'0');}
+            _osd(){['lmT','lmB'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('show');});if(this._ot)clearTimeout(this._ot);if(this.state.isPlaying)this._ot=setTimeout(()=>{['lmT','lmB'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('show');});},3000);}
+            _nxt(){const item=this.state.currentEpisode;if(!item||item.Type!=='Episode'||!item.SeriesId)return;const{server,token,userId}=this.app.config;fetch(server+'/emby/Shows/'+item.SeriesId+'/Episodes?seasonId='+item.SeasonId+'&userId='+userId+'&api_key='+token+'&limit=3&Fields=Overview,UserData').then(r=>r.json()).then(d=>{const eps=d.Items||[];const idx=eps.findIndex(e=>e.Id===item.Id);const next=eps[idx+1];if(!next)return;this.state.upNextItem=next;const el=document.getElementById('lmNu');el.innerHTML='<div style="display:flex;gap:10px"><div style="width:60px;flex-shrink:0;aspect-ratio:2/3;border-radius:6px;overflow:hidden;background:#222"><img src="'+this.app.getImageSrc(next)+'" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'"></div><div style="flex:1;min-width:0"><div style="font-size:10px;color:#888;text-transform:uppercase">Up Next</div><div style="color:#fff;font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+this.app.escapeHtml(next.Name)+'</div><div style="color:#999;font-size:11px">S'+(next.ParentIndexNumber||'?')+'E'+(next.IndexNumber||'?')+'</div><div style="color:#52B54B;font-size:11px;font-weight:700;margin-top:6px" id="lmCn">15s</div></div><button onclick="longPlayer._cn()" style="flex-shrink:0;background:0;border:0;color:#666;cursor:pointer"><i data-lucide="x" style="width:16px;height:16px"></i></button></div><div style="display:flex;gap:8px;margin-top:10px"><button onclick="longPlayer._cn()" style="flex:1;padding:6px;border-radius:8px;border:0;background:#222;color:#ccc;font-size:12px;cursor:pointer">Cancel</button><button onclick="longPlayer._pn()" style="flex:1;padding:6px;border-radius:8px;border:0;background:#52B54B;color:#fff;font-size:12px;font-weight:700;cursor:pointer">Play Now</button></div>';el.classList.add('on');lucide.createIcons({root:el});let cd=15;this._nt=setInterval(()=>{cd--;const c=document.getElementById('lmCn');if(c)c.textContent=cd+'s';if(cd<=0)this._pn();},1000);}).catch(()=>{});}
+            _cn(){if(this._nt){clearInterval(this._nt);this._nt=null;}document.getElementById('lmNu').classList.remove('on');}
+            _pn(){this._cn();if(this.state.upNextItem)this._play(this.state.upNextItem.Id);}
+            _bk(){document.addEventListener('keydown',e=>{const o=document.getElementById('lmO');if(!o||!o.classList.contains('on'))return;const p=document.getElementById('lmPl');if(!p||p.style.display==='none')return;if(this.app.isAnyModalOpen&&this.app.isAnyModalOpen())return;switch(e.key){case' ':case'k':e.preventDefault();this._tp();break;case'ArrowLeft':e.preventDefault();this._rw();break;case'ArrowRight':e.preventDefault();this._ff();break;case'Escape':e.preventDefault();this._cp();break;case'f':e.preventDefault();document.getElementById('lmO').requestFullscreen().catch(()=>{});break;}});}
         }
 
         window.onload = () => {
